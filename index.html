@@ -103,6 +103,44 @@
             animation: titlePulse 1s 1 alternate; 
         }
 
+        .xibao .ziguding {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: serif, sans-serif;
+            font-weight: 900;
+            font-size: 50px;
+            text-align: center; 
+            color: #ffd700;
+            text-shadow:
+                0 0 10px #ff0000,
+                0 0 20px #ff0000,
+                0 0 30px #ff0000,
+                0 0 40px #ffd700,
+                0 0 70px #ffd700,
+                0 0 90px #ffd700; 
+        }
+
+        .xibao .xibaoxiao {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: serif, sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            text-align: center; 
+            color: #ffd700;
+            text-shadow:
+                0 0 10px #ff0000,
+                0 0 20px #ff0000,
+                0 0 30px #ff0000,
+                0 0 40px #ffd700,
+                0 0 70px #ffd700,
+                0 0 90px #ffd700;
+        }
+
         @keyframes titlePulse {
             0% { text-shadow: none; }
             100% { text-shadow: 0 0 10px #ffd700; }
@@ -460,9 +498,10 @@
 <body>
     <div class="xibao" id="xibao">
         <button class="closeBtn" id="closeBtn">&times;</button>
+        <div class="xibaoxiao">特别赞助：</div>
         <div class="rainbow" style="text-align: center;">
-            <span class="xibaozi">特别赞助：</span>
-            <span class="rainbow-text">ZLCjjlr</span>
+            <span class="rainbow-text"></span>
+            <span class="xibaozi">，ZLCjjlr</span>
         </div>
     </div>
     <div class="dakuang">
@@ -471,6 +510,28 @@
     </div>
         <div class="decoration">不造谣，不信谣，不传谣。</div>
     <div class="zhengwen-container">
+        <div class="zhengwen">
+            <h1>2026年2月23日 星期一</h1>
+            <h2>开发相关</h2>
+            <h3>信息</h3>
+            <p>我家刚停电了，现在才来电。</p>
+            <h3>OOOInterface5.2</h3>
+            <p>现在开始做5.2了。目前搜索引擎切换按钮自定义的样式效果已经做好了，具体的JS估计也就这两天的事，搞完了就会做第一个测试版（计划版本号 BS46）。</p>
+            <p class="se">//这只是测试版第一版，现有功能不代表最后效果。</p>
+            <h3>ByRUDAN网页</h3>
+            <p>昨天晚上23点多钟的时候，我更新了这个网页。更新的内容非常简单：加入了一个特别赞助的名单。</p>
+            <p>你想要加入这个名单吗？你想让OOOInterface不断变得更好吗？是时候支持我了！现在您只需打开OOOInterface，右键点击关于按钮，向下滑动至最底部，点击“为更棒的OOOInterface预备好”就可以给我提供支持了！你的支持越多，在特别赞助的名单排行就越靠前！</p>
+            <p>另外，我也正在设计一系列的排行：网页活动排行，赞助排行等等等等。</p>
+            <h3>JiunieDesign</h3>
+            <p>这是一套完全自主研发的学习语言。2023年被首次提出，而现在他将被重新改写。请期待。</p>
+            <h2>记录</h2>
+            <p>你是否在为抖音上全是卖车直播而烦恼？我有一个百分百可行的办法：只需要找到那些卖车直播、那些卖车广告，进去给他发什么，“我家表弟开车被炸死了”，并点击不感兴趣，账号就一定会恢复正常！亲测有效！</p>
+            <h2>新闻见解</h2>
+            <h3>热点新闻</h3>
+            <li style="list-style-type: disc;">NASA 阿耳忒弥斯 2 号再推迟：火箭新问题，3 月发射窗口取消，时间待定。<br>赢麻了，赢麻了，赢麻了。</li>
+            <h3>投稿新闻</h3>
+            <li style="list-style-type: disc;">极客湾自费测 44 台零售机，曝光安卓厂商 “媒体机特调作弊”，视频被无预警下架，随后极客湾开源视频全网传播，引爆手机评测信任危机。<br>这有什么很奇怪的吗？国内品牌都这样。不管什么品类的，什么价格的，都这样。目前公开信息有：vivo给出的说法是，不是他们下架的；华为没测；Apple、SAMSUNG不存在媒体特调。但是要是我的观点，能做到“未走法务投诉流程、无侵权提示，极客湾未收到任何通知”，不是一般的公关部能做到的。</li>
+        </div>
         <div class="zhengwen">
             <h1>2026年2月22日 知更鸟哥哥</h1>
             <h2>开发相关</h2>
