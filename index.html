@@ -363,7 +363,7 @@
         }
 
         .closeBtn {
-            position: absolute;
+            position: absolute; 
             top: 10px;
             right: 10px;
             width: 24px;
@@ -460,9 +460,6 @@
             animation: kuangjia 0.5s steps(150) 1;
         }
 
-
-
-
         .zhufu-container {
             width: 75%;
             margin: 0 auto 50px;
@@ -471,24 +468,51 @@
             gap: 20px;
         }
 
-
         .zhufu {
             background: rgba(255, 255, 255, 0.115);
             border: 2px solid #000000;
             backdrop-filter: blur(10px);
             border-radius: 12px;
             padding: 30px;
-            text-align: left;
+            text-align: center;
             animation: kuangjia 0.5s steps(150) 1;
         }
 
         .zhufuvid {
             width: 40%;
+            margin: 0 auto;
             max-width: 600px;
-            margin: 10px auto;
             display: block;
             border-radius: 12px;
             animation: kuangjia 0.5s steps(150) 1;
+        }
+
+        .zhufu a {
+            color: white;
+            text-align: center;
+            font-family: serif, sans-serif;
+            font-size: 24px;
+            background-color: #00AE00;
+            border-radius: 12px;
+            text-decoration: none;
+            padding: 10px 6px;
+        }
+
+        .zhufu a:hover {
+            color: white;
+            background-color: #00AE00;
+            border-radius: 12px;
+            text-decoration: none;
+            padding: 10px 6px;
+            animation: lianjie 0.25s steps(1500) 1;
+        }
+
+        @keyframes lianjie {
+            0% { color: #00AE00; background-color: transparent; border-radius: 60px; padding: 60px;}
+            10% { color: #00AE0099; background-color: transparent; border-radius: 4px; padding: 0.5px 0.5px;}
+            50% { color: #00AE0099; background-color: transparent; border-radius: 6px; padding: 6px 2px;}
+            90% { color: #00AE0050; background-color: #00AE0050; border-radius: 10px; padding: 8px 4px;}
+            100% { color: white; background-color: #00AE00; border-radius: 12px; padding: 10px 6px;}
         }
 
         h1 {
@@ -810,13 +834,47 @@
     </div>
     <div class="zhengwen-container">
         <div class="zhengwen">
+            <h1>2026年2月26日 星期四</h1>
+            <h2>听全文</h2>
+            <audio controls class="audio-player">
+                <source src="audio/260226.mp3" type="audio/mpeg">
+                您的浏览器不支持音频播放。
+            </audio>
+            <h2>创作相关</h2>
+            <h3>ByRUDAN页面</h3>
+            <p>榜单的Style写好了，数据还没填。</p>
+            <h3>OOOInterface5.2</h3>
+            <p>搜索引擎切换按钮自定义的功能制作好了，但是遇到了一个非常严重的Bug。简单来说就是在修改了第二个搜索引擎切换按钮的状态之后，开关一次设置页面，整个页面就会完全卡死：这种情况唯一的解法就是删除浏览器的数据。只能说这两天尽力解决吧。</p>
+            <p>InterfacePro (Refiner) 邀请函已经发出去了，可以查收邮件。本来不想广播的，因为广播后又要解释一大堆。</p>
+            <p>为什么没有收到InterfacePro (Refiner) 的邀请函？InterfacePro (Refiner) 本质属于测试版本，有非常多Bug，甚至会干扰正常使用。</p>
+            <p>邮件原文：<code>该内容为测试版，问题较多（前期版本）甚至无法使用都为正常现象</code></p>
+            <p>作为普通用户，只要等正式版就好了。</p>
+            <h2>记录</h2>
+            <h3>MarkText</h3>
+            <p>为了转写HTML方便，很早我就在写本网站内容时使用markdown格式了。此前我使用的工具是微软记事本：微软记事本在不断增加markdown编辑能力，但事实是，他的体验很差。今天我也是终于开窍了，想对自己好一点了，去下了一个开源markdown编辑器MarkText。这才发现以前用微软的记事本真是受尽苦头啊。</p>
+            <h3>淘宝</h3>
+            <p>现在这些购物软件已经开始搞什么三八大促了。我说白了，他们不是真正的多么关心女性，而是女性的钱好赚啊。结果受苦的就是我喽，宝了个贝的，点个外卖那个实况窗出来一坨粉色的东西你知道我什么心情吗？就如果它是粉色的，但设计的好看（比如B站那种）我都不说什么，他这完完全全就是强行给这个图标塞了一坨粉色的进去。你拉了一坨屎，然后强行给它染成粉色，你能想象吗？、</p>
+            <h3>崩坏：星穹铁道</h3>
+            <p>我之前不是说我把匹诺康尼的剧情做完了吗？骗你的。其实还有一大堆。我当时天真的以为那是完结了，没想到那宝贝的还是在一场梦里。（剧情中的太一之梦梦境）今天才真真正正踏上翁法罗斯。</p>
+            <h2>新闻见解</h2>
+            <h3>热点新闻</h3>
+            <li style="list-style-type: disc;"><a href="https://www.mfa.gov.cn/zyxw/202602/t20260225_11863588.shtml">中德发布联合新闻声明：双方深化机械、装备、化工等经贸合作，支持以联合国宪章为基础推动乌克兰问题停火止战，为中德关系与全球治理注入稳定动力。</a><br>特朗普太厉害了，自从有了这特朗普中欧关系欻欻往上涨啊。</li>
+            <li style="list-style-type: disc;"><a href="https://www.ithome.com/0/923/814.htm">Galaxy S26 Ultra 防窥屏：采用硬件级电控光栅结构，可视角度压缩至 30° 以内，侧面视角近乎黑屏，正面显示效果不受影响，支持全屏、局部及智能自动防窥，实现高效隐私防护。</a><br>这应该是这几年来非常重大的创新了。这设计很好，但是也有点美中不足：他还是做不到完全防偷窥的。其实我觉得最优解就是把华为的那种防偷窥提醒方案和这种方案结合起来：别人看你的屏幕，在看得清的时候就会弹出一个防窥提示让他自己觉得尴尬；在防窥提示因特殊角度而无法弹出的时候又看不清屏幕了。</li>
+            <li style="list-style-type: disc;"><a href="https://www.ithome.com/0/923/699.htm">苹果全新 MacBook 标准版。Apple首款无后缀入门 MacBook，搭载 A18 Pro 芯片，8GB内存，国行 4000 元档起，无风扇静音设计。</a><br>采用A18Pro芯片我都不说什么，8GB内存是认真的吗？这用Chrome都能卡爆吧？如果有同时打开多个Excel的需求，8GB内存也不一定够胜任啊。别说什么苹果调教牛逼，这宝贝的是电脑啊！</li>
+            <h3>投稿新闻</h3>
+            <li style="list-style-type: disc;">一小米空调自动重置！害得我开了一下午的制冷。<br>空调就是格力，这辈子不想再用小米空调。</li>
+            <li style="list-style-type: disc;">老机型不要升级iOS26！某大学生勇闯iOS26被较差的续航和丑漏的设计气炸。<br>MacOS和iOS还是有很大的差距呢。MacOS上的液态玻璃确实好看，这手机上的只能说一言难尽。</li>
+            <li style="list-style-type: disc;">圆通快递真宝贝的垃圾！一帅哥在网购平台购入使用圆通快递发货的商品，受圆通快递送货速度所震惊。<br>快递就是顺丰，就像空调就是格力一样。</li>
+            <div class="xiaozi">Style Version: 1.1.5<br>未使用人工智能</div>
+        </div>
+        <div class="zhengwen">
             <h1>2026年2月25日 星期三</h1>
             <h2>听全文</h2>
             <audio controls class="audio-player">
                 <source src="audio/260225.mp3" type="audio/mpeg">
                 您的浏览器不支持音频播放。
             </audio>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>InterfacePro的计划</h3>
             <p>我说过三月前会出一个测试版。测试版面相<span style="color: #87CEEB;">InterfacePro</span>(Refiner)用户。Refiner资格和具体信息请关注个人邮箱。
             </p>
@@ -850,7 +908,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月24日 星期二</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>OOOInterface5.2</h3>
             <p>切换搜索引擎的逻辑太乱了，实在不行，到时候推倒重做吧。刚刚做着做着，那手表突然给我提示，说什么我情绪很差，建议我做运动。不过倒好，这次没说我要死了。</p>
             <h3>ByRUDAN</h3>
@@ -888,7 +946,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月23日 星期一</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>我家刚停电了，现在才来电。</p>
             <h3>OOOInterface5.2</h3>
@@ -914,7 +972,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月22日 知更鸟哥哥</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <img src="images/zuoriyanlun.jpg" alt="图片"
                 style="width: 300px; float: left; margin-right: 50px; margin-left: 15px;">
@@ -947,7 +1005,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月21日 星期六</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>反馈</h3>
             <p>郑重的道歉</p>
             <p>因使用移动设备编辑，新版 ByRUDAN网页 顶部红色喜报内容大小调配不当，导致阅读体验差。</p>
@@ -983,7 +1041,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月20日 星期五</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>1月31日至2月5日内容已全部同步完成，往下滑就能查看了！不得不说，我以前写的东西是真的多，粘贴的累死我了。</p>
             <p>The part that out of control is not under control, But I think the fire will be under control too! </p>
@@ -1024,7 +1082,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月15日 知更鸟哥哥</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <p class="h3s">信息</p>
             <p>即将迎来春节，我正在设计ByRUDAN网页的全新春节样式。上次做过一次类似春节的样式，被骂懵了，这次要重新做一个。目前还在找灵感（能抄到好看的自然是最好了）。</p>
             <p>为了营造清朗网络空间，ByRUDAN网页即将发布对于评论内容的审核机制（此前所上传的评论皆为精选内容，但无明确的精选规则）。</p>
@@ -1061,7 +1119,7 @@
             <h1>2026年2月14日 星期六</h1>
             <h2>重要信息</h2>
             <p style="color: red; font-weight: 700; ">本人没有恋男倾向，与周先生（网名ZSCC）仅技术交流和合作，不存在也不可能存在不正当关系！不造谣，不信谣，不传谣。</p>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <p class="h3s">信息</p>
             <p>曾经在每日首个内容是回应一些适合公开回应的问题。现在全部改成放在昨日评论区。希望大家喜欢。</p>
             <p>目前我还没有研究那个评论系统。最近没啥时间放在这上面，等年后吧。画个饼那就是期待 Style-Version1.2.0</p>
@@ -1085,7 +1143,7 @@
             <h2>ByRUDAN Style-Version 1.1.1 Update</h2>
             <p>Description: 将“开发相关”内“其他”替换为“信息”（旧内容已同步更新）；<a href="https://byrudan.carrd.co/"
                     target="_blank">旧版网页</a>内容全部迁移完成。</p>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>昨天被骂惨了。现在已经把那些乱七八糟的删光了。昨日评论展示板已更新，可前往查看。</p>
             <p>看了下，评论功能确实是有可能的，但不好做。我做展示板而不加入完整的评论区不是为了偷懒吗🙂</p>
@@ -1124,7 +1182,7 @@
             <p>Description:
                 伴随着新版网页的发布，网页的设计将要迎来更新。这次的版本带来了阅读效率更高的界面——增大字体和调整间距，老内容同步更新的功能——此后新版样式更新时老版本内容将同步更新。新版网页完全由RUDAN自主研发，未使用任何AI；代码完全开源（可以在浏览器中按CTRL/Command+S下载源代码）。
             </p>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>功能建议：</h3>
             <p>优化开发者模式设计（开发者模式的设计确实有点乱）</p>
             <h3>信息：</h3>
@@ -1162,7 +1220,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月11日 星期三</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>这是新版网页的首次展示！（首次展示可能有些许不足，如果视觉体验受到影响，可以随时反馈到我的邮箱）</p>
             <p>鉴于老版本网站限制极为严格，若未开通会员基本无法正常使用，故而我毅然转向GitHub。此网页是我和大家分享一些有关OOOInterface、RUD文件的信息和我个人的一些见闻的平台。（目前）其并非OOOInterface的下载平台，若需下载URL=
@@ -1185,7 +1243,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月10日 星期二</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>最近更新比较少，不是在肝5.1就是在与人交谈有关OOOInterface的事宜，不然就是吃饭睡觉作业原神（崩铁都没咋玩了）。</p>
             <p>今天是5.1发布的日子（昨天晚上睡着了，忘记发了）。非常高兴能看到5.1能拥有如此高的下载量。</p>
@@ -1195,7 +1253,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月9日 星期一</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>请期待：明天零点。</p>
             <p>OOOInterface将会有这样的产品线</p>
@@ -1210,7 +1268,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月8日 知更鸟哥哥</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>一些事情被发生了，正式版本将命名为RS42，发布时间不变。桌面版公测于10日发布，正式版时间待定。</p>
             <h2>记录</h2>
@@ -1233,7 +1291,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月6日 星期五</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>今天汇报好消息，今日成了！</p>
             <p>公元2026年2月6日，星期五，这一天在时间的长河中注定留下浓墨重彩的一笔。按照传统农历纪年法，此时正处于乙巳年腊月十九，具体时间来到了当日的十八时三十分，一个历史性的时刻就此诞生。就在这一特殊瞬间，OOOInterface桌面版的首个公测版本成功问世，标志着其在软件发展历程中迈出了具有里程碑意义的一步，开启了与广大用户互动、接受检验的全新阶段。
@@ -1250,7 +1308,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月5日 星期四</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>今天来聊聊5.2的计划吧。5.2，全称5.2:25，是一个新的大版本，在5.1正式版发布之后一周内就会开始制作。</p>
             <p>有朋友给我反馈，说他无法用谷歌，那这个按钮放在上面就是浪费的，如果换成其他的搜索引擎那么效率会更高。因此我计划在5.2版本加入全新的自定义搜索引擎切换按钮功能。在描述新功能之前，让我们先回顾一下现在搜索引擎切换按钮现在已经具备的功能。现在的谷歌引擎按钮左键是进入搜索，右键是网页直达；而必应只有左键进入搜索，右键没有功能。而我想做的新功能的效果有两个。一个是可以在设置里自定义第一个引擎是什么（但因为只有谷歌有接口，所以网页直达大概率是只有谷歌才有了）。另一个则是右键第二个引擎可以切换更多的引擎（可以在设置里设置右键时可以切换的引擎以及出现顺序）。这个方案是我经过很长时间思考（这几天学校的体育课一直在想这个问题）得出来的。已经给几个有需求的朋友看了，目前看大家都挺喜欢这个设计。
@@ -1267,7 +1325,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月4日 星期三</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>出门在外，那个便单突然弹出来个通知，才想起来网页还没更新，人懵了。</p>
             <h3>反馈</h3>
@@ -1288,7 +1346,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月3日 星期二</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>信息</h3>
             <p>不是我拖拉，我在玩原神，刚做完关于糍粑的任务。</p>
             <p class="se">只能说糍粑是不会抽的，角色塑造很好，就是太丑了（比菈乌玛好一点）。想捞一个那维莱特，随便抽了40抽，没出金，倒是抽出了三只叶洛亚。算了，不抽了，就这样了。</p>
@@ -1310,7 +1368,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月2日 万恶的星期一</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>修复</h3>
             <p>修复问题：图片显示大小不便于阅读</p>
             <p>不断倾听用户声音，让OOOInterface变得更好。</p>
@@ -1369,7 +1427,7 @@
         </div>
         <div class="zhengwen">
             <h1>2026年2月1日 知更鸟哥哥</h1>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>修复</h3>
             <p>修复问题：1月31日 表格 版本显示错误</p>
             <h3>信息</h3>
@@ -1424,7 +1482,7 @@
             <h1>2026年1月31日 星期六</h1>
             <h2>重要信息</h2>
             <p>这是第一条公告！首先，感谢你能打开这里，此后我将在这里每天更新一段内容（从今天起到3月2号，后面还不确定），这将包括实时开发进度和相关的通知。那么开启正文吧。</p>
-            <h2>开发相关</h2>
+            <h2>创作相关</h2>
             <h3>修复</h3>
             <p>最近不是快放假了吗，我就想着改改原来的习惯，多记录点日常啥的，就写了个Bug列表。然后就~</p>
             <li style="list-style-type: disc;">OI24 AS20 260129 右键菜单概率不显示或闪烁</li>
