@@ -794,6 +794,148 @@
             animation: kuangjia 0.5s steps(150) 1;
         }
 
+        .divider {
+            background: linear-gradient(180deg, transparent, #555555, transparent);
+            border-radius: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .kaPianBiaoTi {
+            font-size: 1.4rem;
+            color: #1d2b4f;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .kaPianBiaoTi::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(to bottom, #3a6ff3, #5c8bff);
+            border-radius: 2px;
+            margin-right: 12px;
+        }
+
+        /* 柱状图容器 */
+        .chart-container {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .zhuLie {
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            height: 100%;
+            gap: 15px;
+        }
+
+        .zhu {
+            width: 40px;
+            background: linear-gradient(to top, #3a6ff3, #5c8bff);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
+            transform: scaleY(0);
+            transform-origin: bottom;
+        }
+
+        .zhu.huoDong {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        .zhuBiaoQian {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #4a5568;
+            text-align: center;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+
+        .zhuShuZi {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: white;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 4px 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .zanZhuZhu {
+            background: linear-gradient(to top, #ff6b6b, #ff8e8e);
+        }
+
+        .zanZhuZhu:nth-child(2n) {
+            background: linear-gradient(to top, #4ecdc4, #6de0d9);
+        }
+
+        .zanZhuZhu:nth-child(3n) {
+            background: linear-gradient(to top, #ffd93d, #ffdf6d);
+        }
+
+        .zanZhuXiangMu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .zanZhuPaiMing {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #3a6ff3, #5c8bff);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .zanZhuMingCheng {
+            font-weight: 500;
+            color: #1d2b4f;
+        }
+
+        .zanZhuJinE {
+            font-weight: 600;
+            color: #e53e3e;
+        }
+
         footer {
             width: 25%;
             background: rgba(0, 0, 0, 0.1);
@@ -839,11 +981,19 @@
         <div class="ultra">ByRUDAN的公告</div>
         <div class="pro">和大家分享一些有关OOOInterface、RUD文件的信息，和我个人的一些见闻。</div>
     </div>
+    <div class="xibao" style="height: auto;">
+            <div class="xibaozi">OOOInterface紧急发布新版本，修复了诸多已知问题，强烈建议更新！</div>
+            <div class="xibaozi" style="font-size: 30px">
+                点击前往下载：<br>
+                <a href="https://wwbkd.lanzoum.com/i8KFr3jcb8ed" target="_blank">蓝奏云下载&nbsp;</a>
+                <a href="https://drive.google.com/file/d/1Ftqz31GjdiRAGJSz2PnoMOB5JkauzaCj/view?usp=sharing" target="_blank">&nbspGoogle下载</a>
+            </div>
+    </div>
     <div class="xibao" id="xibao">
         <button class="closeBtn" id="closeBtn">&times;</button>
         <div class="xibaoxiao">特别赞助：</div>
         <div class="rainbow" style="text-align: center;">
-            <span class="rainbow-text">ZLCjjlr󰠇</span>
+            <span class="rainbow-text">ZLCjjlr</span>
             <span class="xibaozi">，</span>
         </div>
     </div>
@@ -862,6 +1012,10 @@
         </div>
     </div>
     <div class="zhengwen-container">
+        <div class="zhengwen">
+            <h1>2026年2月27日 星期五</h1>
+            <a href="https://www.speedtest.net/" target="_blank">显示失败，请检查网络连接</a>
+        </div>
         <div class="zhengwen">
             <h1>2026年2月26日 星期四</h1>
             <h2>听全文</h2>
@@ -1553,8 +1707,27 @@
         </div>
     </div>
     <div class="bangdan-container">
-        <p>榜单<br>开发中内容</p>
+                <!-- 赞助榜单区域 -->
+                <div style="width: 90%;">
+                    <h2 class="kaPianBiaoTi">赞助金额榜单</h2>
+                    
+                    <!-- 赞助榜单柱状图 -->
+                    <div class="chart-container" style="margin-top: 20px;">
+                        <div class="zhuLie" id="zanZhuBangDanZhuZhuangTu">
+                            <!-- 赞助榜单柱状图将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+
+                    <!-- 赞助榜单列表 -->
+                    <div style="margin-top: 30px;">
+                        <h3 style="margin-bottom: 15px; color: #1d2b4f; font-weight: 600;">详细榜单</h3>
+                        <div id="zanZhuBangDanLieBiao">
+                            <!-- 赞助榜单列表将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
     </div>
+
 
     <script>
         const closeBtn = document.getElementById('closeBtn');
@@ -1574,6 +1747,99 @@
             if (!e.target.closest('.menu-container')) {
                 menuList.classList.remove('active');
             }
+        });
+
+        // 初始化数据
+
+        let zanZhuShuJu = [
+            { mingCheng: 'ZLCjjlr', jinE: 21.00, paiMing: 1 },
+            { mingCheng: '', jinE: 2.00, paiMing: 2 },
+        ];
+
+
+
+        // 渲染赞助榜单柱状图
+        function xuanRanZanZhuBangDanZhuZhuangTu() {
+            const rongQi = document.getElementById('zanZhuBangDanZhuZhuangTu');
+            rongQi.innerHTML = '';
+
+            // 找出最大值用于比例计算
+            const zuiDaJinE = Math.max(...zanZhuShuJu.map(xiangMu => xiangMu.jinE));
+            
+            zanZhuShuJu.forEach((xiangMu, xiangBiao) => {
+                const zhuGaoDu = (xiangMu.jinE / zuiDaJinE) * 280; // 最大高度280px
+                
+                const zhuDiv = document.createElement('div');
+                zhuDiv.className = 'zhu zanZhuZhu';
+                zhuDiv.style.height = zhuGaoDu + 'px';
+                zhuDiv.dataset.xiangBiao = xiangBiao;
+                
+                const biaoQianDiv = document.createElement('div');
+                biaoQianDiv.className = 'zhuBiaoQian';
+                biaoQianDiv.textContent = xiangMu.mingCheng; // 显示完整名称
+                
+                const jinEDiv = document.createElement('div');
+                jinEDiv.className = 'zhuShuZi';
+                jinEDiv.textContent = '¥' + geShiHuaShuZi(xiangMu.jinE);
+                
+                zhuDiv.appendChild(biaoQianDiv);
+                zhuDiv.appendChild(jinEDiv);
+                rongQi.appendChild(zhuDiv);
+            });
+
+            // 触发动画
+            setTimeout(() => {
+                document.querySelectorAll('#zanZhuBangDanZhuZhuangTu .zhu').forEach((zhu, xiangBiao) => {
+                    setTimeout(() => {
+                        zhu.classList.add('huoDong');
+                    }, xiangBiao * 150);
+                });
+            }, 100);
+        }
+
+        // 渲染赞助榜单列表
+        function xuanRanZanZhuBangDanLieBiao() {
+            const rongQi = document.getElementById('zanZhuBangDanLieBiao');
+            rongQi.innerHTML = '';
+
+            zanZhuShuJu.forEach(xiangMu => {
+                const zanZhuXiangMu = document.createElement('div');
+                zanZhuXiangMu.className = 'zanZhuXiangMu';
+                
+                const paiMingSpan = document.createElement('span');
+                paiMingSpan.className = 'zanZhuPaiMing';
+                paiMingSpan.textContent = xiangMu.paiMing;
+                
+                const mingChengSpan = document.createElement('span');
+                mingChengSpan.className = 'zanZhuMingCheng';
+                mingChengSpan.textContent = xiangMu.mingCheng;
+                
+                const jinESpan = document.createElement('span');
+                jinESpan.className = 'zanZhuJinE';
+                jinESpan.textContent = '¥' + geShiHuaShuZi(xiangMu.jinE);
+                
+                zanZhuXiangMu.appendChild(paiMingSpan);
+                zanZhuXiangMu.appendChild(mingChengSpan);
+                zanZhuXiangMu.appendChild(jinESpan);
+                
+                rongQi.appendChild(zanZhuXiangMu);
+            });
+        }
+
+        // 格式化数字显示
+        function geShiHuaShuZi(num) {
+            if (num >= 10000) {
+                return (num / 10000).toFixed(1) + '万';
+            }
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            xuanRanZanZhuBangDanZhuZhuangTu();
+            xuanRanZanZhuBangDanLieBiao();
         });
     </script>
 </body>
