@@ -62,7 +62,7 @@
             }
             100% {
                 width: 150px;
-                height: 670px;
+                height: var(--menu-height, 670px);
                 border-radius: 12px;
             }
         }
@@ -70,7 +70,7 @@
         @keyframes springClose {
             0% {
                 width: 150px;
-                height: 670px;
+                height: var(--menu-height, 670px);
                 border-radius: 12px;
             }
             100% {
@@ -1999,6 +1999,8 @@
 
         menuBtn.addEventListener('click', () => {
             menuBtn.classList.add('hidden');
+            const menuHeight = window.innerHeight - 40;
+            menuList.style.setProperty('--menu-height', menuHeight + 'px');
             menuList.classList.add('active');
             menuList.classList.remove('closing');
             document.body.classList.add('menu-active');
