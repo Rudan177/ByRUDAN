@@ -1527,6 +1527,7 @@
 
             .xibao {
                 width: 100%;
+                height: 120px;
                 padding: 30px 0;
             }
 
@@ -1563,6 +1564,7 @@
             .xibaoxin-content {
                 font-size: 15px;
                 width: 85%;
+                line-height: 1.6;
             }
 
             .xibaoxin-detail {
@@ -1672,6 +1674,7 @@
 
             .xibao {
                 width: 100%;
+                height: 130px;
                 padding: 20px 0;
             }
 
@@ -1709,6 +1712,7 @@
             .xibaoxin-content {
                 font-size: 13px;
                 width: 88%;
+                line-height: 1.5;
             }
 
             .xibaoxin-detail {
@@ -1720,7 +1724,7 @@
             .zhengwen-container,
             .bangdan-container {
                 width: 95%;
-                padding: 20px;
+                padding: 0;
                 flex-direction: column;
                 gap: 20px;
             }
@@ -1802,17 +1806,70 @@
                 transform: translateX(-50%);
                 width: 80px;
                 height: 50px;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                transform-origin: center bottom;
             }
 
             .menu-container.expanded {
                 position: fixed;
-                top: 40%;
+                top: auto;
                 bottom: 10%;
-                left: 10%;
+                left: 50%;
+                transform: translateX(-50%);
                 width: 80%;
                 height: 50%;
-                transform: none;
+            }
+
+            .menu-container.expanding {
+                animation: menuExpand 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            }
+
+            @keyframes menuExpand {
+                0% {
+                    width: 80px;
+                    height: 50px;
+                    bottom: 10px;
+                    border-radius: 28px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                100% {
+                    width: 80%;
+                    height: 50%;
+                    bottom: 10%;
+                    border-radius: 16px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+
+            @keyframes menuCollapse {
+                0% {
+                    width: 80%;
+                    height: 50%;
+                    bottom: 10%;
+                    border-radius: 16px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                100% {
+                    width: 80px;
+                    height: 50px;
+                    bottom: 10px;
+                    border-radius: 28px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+
+            .menu-container.collapsing {
+                position: fixed;
+                top: auto;
+                bottom: 10%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+                height: 50%;
+                animation: menuCollapse 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             }
 
             .menu-btn {
@@ -1975,13 +2032,13 @@
                 <span id="themeToggle"><svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="currentColor"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q8 0 17 .5t23 1.5q-36 32-56 79t-20 99q0 100 70 170t170 70q52 0 99-20t79-56q1 14 1.5 23t.5 17q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-116 0-198-82t-82-198q0-20 3-40t8-40q-78 32-126.5 102T216-480q0 110 77 187t187 77Zm-10-270Z"/></svg><svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="currentColor"><path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/></svg><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z"/></svg></span>
                 <span style="display: flex; flex-direction: column; line-height: 1.3;">
                     <span style="font-family:serif; font-weight: 900; font-size: 16px;">ByRUDAN</span>
-                    <span style="font-size: 9px; font-weight: 400; opacity: 0.7;">Style Version: 1.3.2</span>
+                    <span style="font-size: 9px; font-weight: 400; opacity: 0.7;">Style Version: 1.3.3</span>
                 </span>
             </li>
         </ul>
     </div>
     <div class="dakuang">
-        <div class="ultra">ByRUDAN的公告</div>
+        <div class="ultra">ByRUDAN Chapter</div>
         <div class="pro">和大家分享一些有关OOOInterface、Chrome转转、RUD文件的信息，和我个人的一些见闻。</div>
     </div>
     <div class="xibao-slider-container">
@@ -2017,7 +2074,7 @@
             <span class="xibao-dot"></span>
         </div>
     </div>
-    <div class="decoration">Hands up! Today is Sunday! </div>
+    <div class="decoration">星期八好！</div>
     <div class="zhufu-container">
         <div class="zhufu">
             <video controls class="zhufuvid">
@@ -2032,6 +2089,49 @@
         </div>
     </div>
     <div class="zhengwen-container">
+        <div class="zhengwen">
+            <h1>2026年3月23日 万恶的星期一</h1>
+            <h2>创作相关</h2>
+            <h3>网页定名！</h3>
+            <p>经过观众建议和一些讨论，决定将网页更名为ByRUDAN Chapter。</p>
+            <p>Chapter有 章节 的意思，也被用于人身经历等。</p>
+            <p>这个月底会推出一个网页的 logo（具体样式待定）。在新的 logo 出来前为过渡时期，可能会出现名称混用的状况，还请见谅。</p>
+            <h3>Chapter News板块说明</h3>
+            <p>此前（寒假）的新闻板块是每天更新的。出于收集新闻的难度等方面问题，此后会改为每周末更新一次。更长的时间也将带来更精致的更丰富内容，敬请期待。</p>
+            <h3>Chapter Style Version 1.3.3更新</h3>
+            <p>最近更新次数比较频繁。之前在 ZSCC Time里给出的那个版本规划和现行的有些不一样，其原因是Z在一些页面的设计中出现了小失，造成的后果比较严重。</p>
+            <p>手机版的样式还在不断的优化。W表示其高度重视移动版的观看效果（其实就是自己没电脑了，只能拿手机看），进程安排会优先优化手机版的显示效果。</p>
+            <p>这里再次列一个表。关于未来的规划。</p>
+            <ul>
+                <li style="list-style-type: disc;">1.3.3～1.3.9：持续优化移动端菜单效果。</li>
+                <li style="list-style-type: disc;">1.4.0～1.4.9：上线字体切换功能、图片和视频预览优化、音频播放器优化。并持续优化移动端显示效果，持续优化深色模式显示效果。</li>
+            </ul>
+            <h3>近期ByRUDAN其他产品更新问题</h3>
+            <p>W对Z制作的ByRUDAN产品给出了极高的评价，并予其无限期的休假。</p>
+            <p>OOOInterface 5.2 Release大概率还是能在五一劳动节后发布的，对此不用太担心。</p>
+            <h2>记录</h2>
+            <h3>一些全新的名字</h3>
+            <p>在阅读全文的过程中，你看到了一些陌生的名字（很多人应该能够猜出来它们代表什么）。在这里做出一些详细的解释。</p>
+            <ul>
+                <li style="list-style-type: disc;">W：即RUDAN，取名字首字母W</li>
+                <li style="list-style-type: disc;">Z：即ZSCC，取名字首字母Z</li>
+            </ul>
+            <p>此后，如果在ByRUDAN相关内容中的称呼将用这种方式。它带来了较高的效率，而且不用担心记不住的问题。</p>
+            <h3>后期我的更新问题</h3>
+            <p>前文讲过相关内容，就今天一日来看，现在的形势并没有相比原来有太多的改变。内容方面一周两三次更新还是能够做到的。</p>
+            <h2>ZSCC Time</h2>
+            <p>我现在通常代替 W 将内容上传，而每一次的内容制作都需要花大约一小时的时间。</p>
+            <p>作为初中生，有一定的学业压力。后面的月考、期中、期末考前，断坑将是很正常的，也希望大家理解。</p>
+            <h2>投稿</h2>
+            <p>（哇哇哇哇哇终于宝贝的有人投稿了）</p>
+            <p>一位观众（同时也是米哈游崩坏系列游戏的玩家）制作并投搞了一首音乐——W和Z都表示对此十分喜爱。它可以被用作起床的闹钟铃声，从舒缓到激烈，过渡自然。</p>
+            <audio controls class="audio-player">
+                <source src="audio/Honkai-Alarm.aac" type="audio/aac">
+                您的浏览器不支持音频播放。
+            </audio>
+            <p>如果你也喜欢，可以从网页中把它下载下来；如果不方便下载，也可以使用邮箱来向W索求。</p>
+            <div class="xiaozi">未使用人工智能</div>
+        </div>
         <div class="zhengwen">
             <h1>2026年3月21日 星期六</h1>
             <h2>创作相关</h2>
@@ -2997,11 +3097,15 @@
             
             if (isMobile) {
                 menuContainer.classList.remove('content-ready');
+                menuContainer.classList.remove('expanding');
+                menuContainer.classList.remove('expanded');
+                menuContainer.classList.add('collapsing');
+                menuList.classList.remove('active');
+                menuList.classList.remove('content-visible');
+                
                 setTimeout(() => {
-                    menuContainer.classList.remove('expanded');
-                    menuList.classList.remove('active');
-                    menuList.classList.remove('content-visible');
-                }, 150);
+                    menuContainer.classList.remove('collapsing');
+                }, 400);
             } else {
                 if (menuList.classList.contains('active')) {
                     menuList.classList.add('closing');
@@ -3051,27 +3155,16 @@
                 
                 if (diff > 100) {
                     menuContainer.classList.remove('content-ready');
-                    menuContainer.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-                    menuContainer.style.transform = 'translateY(100vh)';
-                    menuContainer.style.width = '80px';
-                    menuContainer.style.height = '50px';
-                    menuContainer.style.top = 'auto';
-                    menuContainer.style.bottom = '10px';
-                    menuContainer.style.left = '50%';
-                    menuContainer.style.borderRadius = '28px';
+                    menuContainer.classList.remove('expanding');
+                    menuContainer.classList.remove('expanded');
+                    menuContainer.classList.add('collapsing');
+                    menuList.classList.remove('active');
+                    menuList.classList.remove('content-visible');
+                    menuContainer.style.transition = '';
+                    menuContainer.style.transform = '';
                     
                     setTimeout(() => {
-                        menuContainer.classList.remove('expanded');
-                        menuList.classList.remove('active');
-                        menuList.classList.remove('content-visible');
-                        menuContainer.style.transition = '';
-                        menuContainer.style.transform = '';
-                        menuContainer.style.width = '';
-                        menuContainer.style.height = '';
-                        menuContainer.style.top = '';
-                        menuContainer.style.bottom = '';
-                        menuContainer.style.left = '';
-                        menuContainer.style.borderRadius = '';
+                        menuContainer.classList.remove('collapsing');
                     }, 400);
                 } else {
                     menuContainer.style.transition = 'transform 0.2s ease';
@@ -3204,9 +3297,14 @@
                     closeMenu();
                 } else {
                     menuList.classList.add('active');
+                    menuContainer.classList.add('expanding');
                     menuContainer.classList.add('expanded');
                     menuContainer.classList.add('content-ready');
                     menuList.classList.add('content-visible');
+                    
+                    setTimeout(() => {
+                        menuContainer.classList.remove('expanding');
+                    }, 400);
                 }
             } else {
                 if (menuList.classList.contains('active')) {
@@ -3760,8 +3858,8 @@
 <footer>
     <div class="footp">
         许可证：ABCD-26W08A<br>
-        最后一次更新：2026年3月14日<br>
-        Style Version: 1.3.2<br>
+        最后一次更新：2026年3月21日<br>
+        Style Version: 1.3.3<br>
         © 2026 ByRUDAN 保留所有权利。
     </div>
 </footer>
