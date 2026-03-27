@@ -27,6 +27,11 @@
             --chart-border: #e0e0e0;
             --xibao-bg: rgba(255, 0, 0, 1);
             --xibao-text: #ffd700;
+            --font-family: 'HMSC', serif, sans-serif;
+        }
+
+        [data-font="serif"] {
+            --font-family: serif, sans-serif;
         }
 
         [data-theme="dark"] {
@@ -61,7 +66,7 @@
 
         @font-face {
             font-family: 'HMPro';
-            src: url('font/HarmonyOS_SansSC_B.ttf') format('truetype');
+            src: url('font/RUDAN.otf') format('opentype');
             font-style: normal;
             font-weight: 900;
             font-display: swap;
@@ -82,7 +87,7 @@
             border: none;
             border-radius: 28px;
             padding: 10px 20px;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: 900;
             font-size: 20px;
             color: var(--menu-text);
@@ -249,7 +254,7 @@
         .menu-list li {
             padding: 10px 20px;
             cursor: pointer;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-size: 18px;
             border-radius: 12px;
             color: var(--menu-text);
@@ -333,7 +338,7 @@
             border: 1px solid rgba(0, 174, 144, 0.3);
             border-radius: 8px;
             background: rgba(0, 174, 144, 0.1);
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-size: 14px;
             color: var(--text-primary);
             cursor: pointer;
@@ -364,9 +369,9 @@
             position: absolute;
             bottom: 2px;
             left: 50%;
-            transform: translateX(-56%);
+            transform: translateX(-50%);
             width: 100%;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: 800;
             font-size: 16px;
             color: var(--menu-text);
@@ -390,7 +395,7 @@
             color: gray;
             font-size: 20px;
             font-weight: 900;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             margin-bottom: 50px;
             top: 1.8%;
             left: 0%;
@@ -589,7 +594,7 @@
         }
 
         .xibao .xibaozi {
-            font-family: 'HMPro', serif, sans-serif;
+            font-family: serif, sans-serif;
             font-weight: 900;
             font-size: 50px;
             text-align: center;
@@ -609,7 +614,7 @@
             top: 50px;
             left: 50%;
             transform: translateX(-50%);
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: 900;
             font-size: 50px;
             text-align: center;
@@ -628,7 +633,7 @@
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: 900;
             font-size: 30px;
             text-align: center;
@@ -647,7 +652,7 @@
             top: 15px;
             left: 50%;
             transform: translateX(-50%);
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: 700;
             font-size: 26px;
             text-align: center;
@@ -661,7 +666,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 80%;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: 400;
             font-size: 17px;
             line-height: 2;
@@ -733,7 +738,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 85%;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: 400;
             font-size: 12px;
             line-height: 1.6;
@@ -865,7 +870,7 @@
         }
 
         .rainbow {
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: 900;
             font-size: 50px;
             text-align: center;
@@ -970,7 +975,7 @@
         .pro {
             display: inline-block;
             text-align: center;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-size: 20px;
             color: var(--text-secondary);
             padding: 10px 10px;
@@ -1029,7 +1034,7 @@
         .zhufu a {
             color: white;
             text-align: center;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-size: 24px;
             background-color: #00AE00;
             border-radius: 12px;
@@ -1088,7 +1093,7 @@
             color: var(--text-primary);
             margin-bottom: 20px;
             text-align: left;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: bold;
         }
 
@@ -1097,7 +1102,7 @@
             color: var(--text-primary);
             margin-bottom: 5px;
             text-align: center;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: 400;
         }
 
@@ -1131,7 +1136,7 @@
             color: var(--text-primary);
             margin-bottom: 5px;
             text-align: left;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: bold;
         }
 
@@ -1142,7 +1147,7 @@
             margin-top: -10px;
             margin-bottom: 5px;
             text-align: left;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: bold;
         }
 
@@ -1154,7 +1159,7 @@
             margin-top: 8px;
             margin-bottom: 8px;
             text-align: left;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
         }
 
         .zhengwen .h3s {
@@ -1164,7 +1169,7 @@
             margin-top: 8px;
             margin-bottom: 8px;
             text-align: left;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: normal;
         }
 
@@ -1186,7 +1191,7 @@
             line-height: 1.5;
             margin-bottom: 15px;
             text-align: left;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: normal;
         }
 
@@ -1199,7 +1204,7 @@
             margin-left: 80px;
             margin-bottom: 15px;
             text-align: left;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
         }
 
         .zhengwen a {
@@ -1247,7 +1252,7 @@
             margin-top: -18px;
             margin-bottom: -18px;
             text-align: center;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: bold;
         }
 
@@ -1258,7 +1263,7 @@
             margin-top: 2px;
             margin-bottom: 2px;
             text-align: left;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
             font-weight: normal;
         }
 
@@ -1269,7 +1274,7 @@
             text-indent: 1em;
             margin-bottom: 10px;
             text-align: left;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
         }
 
         .pinglun .pb {
@@ -1279,7 +1284,7 @@
             text-indent: 2em;
             margin-bottom: 10px;
             text-align: left;
-            font-family: 'HMSC', serif, sans-serif;
+            font-family: var(--font-family);
         }
 
         .pinglun .se {
@@ -2156,24 +2161,30 @@
                             d="M120-80v-60h100v-30h-60v-60h60v-30H120v-60h120q17 0 28.5 11.5T280-280v40q0 17-11.5 28.5T240-200q17 0 28.5 11.5T280-160v40q0 17-11.5 28.5T240-80H120Zm0-280v-110q0-17 11.5-28.5T160-510h60v-30H120v-60h120q17 0 28.5 11.5T280-560v70q0 17-11.5 28.5T240-450h-60v30h100v60H120Zm60-280v-180h-60v-60h120v240h-60Zm180 440v-80h480v80H360Zm0-240v-80h480v80H360Zm0-240v-80h480v80H360Z" />
                     </svg></span>&nbsp;榜单
             </li>
-            <li class="menu-xiaozi"
-                style="display: flex; align-items: center; justify-content: center; gap: 6px; margin-right: 0px;">
-                <span id="themeToggle"><svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" height="18px"
-                        viewBox="0 -960 960 960" width="18px" fill="currentColor">
+            <li>
+                <span id="themeToggle"><svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="var(--menu-icon-color)">
                         <path
                             d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q8 0 17 .5t23 1.5q-36 32-56 79t-20 99q0 100 70 170t170 70q52 0 99-20t79-56q1 14 1.5 23t.5 17q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-116 0-198-82t-82-198q0-20 3-40t8-40q-78 32-126.5 102T216-480q0 110 77 187t187 77Zm-10-270Z" />
-                    </svg><svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" height="18px"
-                        viewBox="0 -960 960 960" width="18px" fill="currentColor">
+                    </svg><svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="var(--menu-icon-color)">
                         <path
                             d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
-                    </svg><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    </svg><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--menu-icon-color)">
                         <path
                             d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
-                    </svg></span>
-                <span style="display: flex; flex-direction: column; line-height: 1.3;">
-                    <span style="font-family:serif; font-weight: 900; font-size: 16px;">ByRUDAN</span>
-                    <span style="font-size: 9px; font-weight: 400; opacity: 0.7;">Style Version: 1.3.4.a Beta</span>
-                </span>
+                    </svg></span>&nbsp;切换主题
+            </li>
+            <li onclick="toggleFont();">
+                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="var(--menu-icon-color)">
+                        <path
+                            d="M200-200h240v-60h-80l36-100h188l36 100h-80v60h240v-60h-50L538-800H422L250-260h-50v60Zm222-220 66-182h4l66 182H422Z" />
+                    </svg></span>&nbsp;切换字体
+            </li>
+            <li class="menu-xiaozi">
+                <span style="font-family:serif; font-weight: 900;">ByRUDAN</span><br>
+                <span style="font-size: 10px; font-weight: 400; opacity: 0.7;">Style Version: 1.4.0 Beta1</span>
             </li>
         </ul>
     </div>
@@ -2193,13 +2204,14 @@
             <div class="xibao-slider-track">
                 <div class="xibao xibao-update">
                     <div class="xibaoxin-title">Beta测试版</div>
-                    <div class="xibaoxin-content"></div>
+                    <div class="xibaoxin-content">推出全新字体切换功能<br>点击菜单即可体验</div>
+                    <div class="xibaoxin-detail">2023年3月20日 ｜ 版本：1.4.0 Beta1</div>
                 </div>
                 <div class="xibao" id="xibao">
                     <div class="xibaoxiao">特别赞助：</div>
                     <div class="rainbow" style="text-align: center;">
                         <span class="rainbow-text">ZLCjjlr</span>
-                        <span class="xibaozi">，</span>
+                        <span class="xibaozi">，Apple</span>
                     </div>
                 </div>
                 <div class="xibao xibao-mujuan">
@@ -3386,6 +3398,29 @@
             themeToggle.classList.toggle('locked', themeLocked);
         }
 
+        function applyFont(font) {
+            if (font === 'serif') {
+                html.setAttribute('data-font', 'serif');
+            } else {
+                html.removeAttribute('data-font');
+            }
+        }
+
+        function toggleFont() {
+            const currentFont = html.getAttribute('data-font');
+            const newFont = currentFont === 'serif' ? 'hmsc' : 'serif';
+            applyFont(newFont === 'hmsc' ? 'hmsc' : 'serif');
+            localStorage.setItem('font', newFont === 'hmsc' ? 'hmsc' : 'serif');
+            closeMenu();
+        }
+
+        const savedFont = localStorage.getItem('font');
+        if (savedFont) {
+            applyFont(savedFont);
+        } else {
+            applyFont('hmsc');
+        }
+
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             applyTheme(savedTheme);
@@ -3437,7 +3472,7 @@
                 color: var(--menu-text);
                 padding: 15px 30px;
                 border-radius: 12px;
-                font-family: 'HMSC', serif, sans-serif;
+                font-family: var(--font-family);
                 font-size: 16px;
                 z-index: 10000;
                 animation: toastFadeIn 0.3s ease;
@@ -3512,8 +3547,13 @@
         // 初始化数据
 
         let zanZhuShuJu = [
-            { mingCheng: 'ZLCjjlr', jinE: 21.00, paiMing: 1 },
-            { mingCheng: '', jinE: 2.00, paiMing: 2 },
+            { mingCheng: '匿名（总和）', jinE: 318.31, paiMing: 1 },
+            { mingCheng: 'Valid_Void', jinE: 100.00, paiMing: 2 },
+            { mingCheng: '筑梦前行', jinE: 100.00, paiMing: 2 },
+            { mingCheng: '请输入文本', jinE: 100.00, paiMing: 2 },
+            { mingCheng: 'lsa', jinE: 50.00, paiMing: 3 },
+            { mingCheng: 'ZLCjjlr', jinE: 21.00, paiMing: 4 },
+            { mingCheng: 'Apple', jinE: 2.00, paiMing: 5 },
         ];
 
         // 滚动检测高亮菜单项
@@ -4033,8 +4073,8 @@
 <footer>
     <div class="footp">
         许可证：ABCD-26W08A<br>
-        最后一次更新：2026年3月21日<br>
-        Style Version: 1.3.4.a 测试版<br>
+        最后一次更新：2026年3月28日<br>
+        Style Version: 1.4.01 测试版<br>
         © 2026 ByRUDAN 保留所有权利。
     </div>
 </footer>
