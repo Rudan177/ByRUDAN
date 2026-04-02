@@ -2263,7 +2263,7 @@
                 </span>
                 <span style="display: flex; flex-direction: column; line-height: 1.3; text-align: center;">
                     <span style="font-family:serif; font-weight: 900; font-size: 18px;">ByRUDAN</span>
-                    <span style="font-size: 9px; font-weight: 400; opacity: 0.7;">Style Version: 1.4.0</span>
+                    <span style="font-size: 9px; font-weight: 400; opacity: 0.7;">Style Version: 1.4.1</span>
                 </span>
             </li>
         </ul>
@@ -2308,11 +2308,7 @@
                 </svg>
             </button>
         </div>
-        <div class="xibao-slider-dots">
-            <span class="xibao-dot active"></span>
-            <span class="xibao-dot"></span>
-            <span class="xibao-dot"></span>
-        </div>
+        <div class="xibao-slider-dots"></div>
     </div>
     <div class="decoration">为更棒的CHAPTER预备好！</div>
     <div class="zhufu-container">
@@ -3944,12 +3940,26 @@
             const track = document.querySelector('.xibao-slider-track');
             const prevBtn = document.querySelector('.xibao-slider-prev');
             const nextBtn = document.querySelector('.xibao-slider-next');
-            const dots = document.querySelectorAll('.xibao-dot');
+            const dotsContainer = document.querySelector('.xibao-slider-dots');
             const slides = track.querySelectorAll('.xibao');
             let currentIndex = 0;
             const totalSlides = slides.length;
             let autoPlayTimer = null;
             const autoPlayInterval = 8000;
+
+            function createDots() {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = 'xibao-dot';
+                    if (i === 0) dot.classList.add('active');
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            function getDots() {
+                return document.querySelectorAll('.xibao-dot');
+            }
 
             function goToSlide(index) {
                 if (index < 0) index = totalSlides - 1;
@@ -3961,6 +3971,7 @@
             }
 
             function updateDots() {
+                const dots = getDots();
                 dots.forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentIndex);
                 });
@@ -4000,11 +4011,13 @@
                 resetAutoPlay();
             });
 
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
+            dotsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('xibao-dot')) {
+                    const dots = getDots();
+                    const index = Array.from(dots).indexOf(e.target);
                     goToSlide(index);
                     resetAutoPlay();
-                });
+                }
             });
 
             let touchStartX = 0;
@@ -4038,6 +4051,7 @@
             wrapper.addEventListener('mouseleave', startAutoPlay);
 
             updateButtons();
+            createDots();
             startAutoPlay();
         })();
 
@@ -4157,7 +4171,7 @@
     <div class="footp">
         许可证：ABCD-26W08A<br>
         最后一次更新：2026年3月21日<br>
-        Style Version: 1.4.0<br>
+        Style Version: 1.4.1<br>
         © 2026 ByRUDAN 保留所有权利。
     </div>
 </footer>
