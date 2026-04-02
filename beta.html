@@ -1195,16 +1195,24 @@
             font-weight: normal;
         }
 
+        .zhengwen ul {
+            margin: 15px 0;
+            padding-left: 25px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
         .zhengwen li {
             font-size: 24px;
             color: var(--text-secondary);
             text-indent: 0em;
             line-height: 1.25;
-            list-style-type: decimal;
-            margin-left: 80px;
+            margin-left: 0;
             margin-bottom: 15px;
             text-align: left;
             font-family: var(--font-family);
+            padding-left: 5px;
+            box-sizing: border-box;
         }
 
         .zhengwen a {
@@ -1335,11 +1343,13 @@
             justify-content: center;
             gap: 20px;
             box-sizing: border-box;
+            overflow: visible;
         }
 
         .bangdan-chart {
             flex: none;
             width: 45%;
+            overflow: visible;
         }
 
         .bangdan-list {
@@ -1388,7 +1398,9 @@
             position: relative;
             height: 300px;
             padding-top: 35px;
+            padding-bottom: 60px;
             margin: 20px 0;
+            overflow: visible;
         }
 
         .zhuLie {
@@ -1397,6 +1409,7 @@
             justify-content: center;
             height: 100%;
             gap: 40px;
+            overflow: visible;
         }
 
         .zhu {
@@ -1425,6 +1438,17 @@
             text-align: center;
             white-space: nowrap;
             line-height: 1.2;
+            max-width: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .zhu:nth-child(odd) .zhuBiaoQian {
+            bottom: -30px;
+        }
+
+        .zhu:nth-child(even) .zhuBiaoQian {
+            bottom: -48px;
         }
 
         .zhuShuZi {
@@ -1440,27 +1464,33 @@
         }
 
         .zanZhuZhu {
-            background: #00AE00;
+            background: rgba(0, 174, 0, 0.75);
+            backdrop-filter: blur(4px);
         }
 
         .zanZhuZhu:nth-child(2n) {
-            background: #00AE00;
+            background: rgba(0, 174, 0, 0.55);
+            backdrop-filter: blur(4px);
         }
 
         .zanZhuZhu:nth-child(3n) {
-            background: #00AE00;
+            background: rgba(0, 174, 0, 0.75);
+            backdrop-filter: blur(4px);
         }
 
         [data-theme="dark"] .zanZhuZhu {
-            background: var(--text-secondary);
+            background: rgba(0, 174, 0, 0.55);
+            backdrop-filter: blur(4px);
         }
 
         [data-theme="dark"] .zanZhuZhu:nth-child(2n) {
-            background: var(--text-muted);
+            background: rgba(0, 174, 0, 0.35);
+            backdrop-filter: blur(4px);
         }
 
         [data-theme="dark"] .zanZhuZhu:nth-child(3n) {
-            background: var(--text-secondary);
+            background: rgba(0, 174, 0, 0.55);
+            backdrop-filter: blur(4px);
         }
 
         .zanZhuXiangMu {
@@ -1655,6 +1685,13 @@
             .bangdan-container {
                 width: 90%;
                 margin: 20px auto;
+                overflow: visible;
+            }
+
+            .bangdan-chart,
+            .bangdan-list {
+                width: 100%;
+                overflow: visible;
             }
 
             .zhufu,
@@ -1681,9 +1718,18 @@
                 text-indent: 1.5em;
             }
 
+            .zhengwen ul {
+                margin: 10px 0;
+                padding-left: 20px;
+                box-sizing: border-box;
+                width: 100%;
+            }
+
             .zhengwen li {
                 font-size: 16px;
-                margin-left: 40px;
+                margin-left: 0;
+                padding-left: 5px;
+                box-sizing: border-box;
             }
 
             .zhufuvid {
@@ -1802,48 +1848,68 @@
             .zhufu-container,
             .zhengwen-container,
             .bangdan-container {
-                width: 95%;
-                padding: 0;
+                width: 92%;
+                padding: 15px;
                 flex-direction: column;
-                gap: 20px;
+                gap: 25px;
+                overflow: visible;
             }
 
             .chart-container {
                 height: 250px;
+                padding-top: 45px;
+                padding-bottom: 60px;
+                overflow: visible;
+            }
+
+            .zhuLie {
+                gap: 12px;
+                overflow: visible;
             }
 
             .zhu {
-                width: 35px;
+                width: 26px;
             }
 
             .zhuBiaoQian {
-                font-size: 0.7rem;
+                font-size: 0.55rem;
+                max-width: 40px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .zhu:nth-child(odd) .zhuBiaoQian {
+                bottom: -25px;
+            }
+
+            .zhu:nth-child(even) .zhuBiaoQian {
+                bottom: -40px;
             }
 
             .zhuShuZi {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
+                top: -25px;
             }
 
             .bangdan-subtitle {
-                font-size: 0.95rem;
-                margin-top: 10px;
-                padding-bottom: 10px;
+                font-size: 1rem;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                padding-bottom: 12px;
                 border-bottom: 1px solid var(--border-color);
+                text-align: center;
             }
 
             .zanZhuXiangMu {
-                padding: 14px 10px;
-                margin: 8px 0;
-                background: var(--bg-primary);
-                border-radius: 8px;
-                border-bottom: none;
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border-color);
             }
 
             .zanZhuPaiMing {
-                width: 26px;
-                height: 26px;
-                font-size: 0.85rem;
-                font-weight: 700;
+                width: 24px;
+                height: 24px;
+                font-size: 0.8rem;
+                font-weight: 600;
             }
 
             .zanZhuMingCheng {
@@ -1853,7 +1919,14 @@
 
             .zanZhuJinE {
                 font-size: 0.95rem;
-                font-weight: 700;
+                font-weight: 600;
+            }
+
+            .zhufu,
+            .zhengwen,
+            .bangdan {
+                padding: 15px;
+                overflow: hidden;
             }
 
             .zhengwen h1 {
@@ -1873,9 +1946,19 @@
                 font-size: 14px;
             }
 
+            .zhengwen ul {
+                margin: 8px 0;
+                padding-left: 18px;
+                box-sizing: border-box;
+                width: 100%;
+            }
+
             .zhengwen li {
                 font-size: 14px;
-                margin-left: 30px;
+                margin-left: 0;
+                margin-bottom: 8px;
+                padding-left: 3px;
+                box-sizing: border-box;
             }
 
             .menu-container {
@@ -2161,30 +2244,27 @@
                             d="M120-80v-60h100v-30h-60v-60h60v-30H120v-60h120q17 0 28.5 11.5T280-280v40q0 17-11.5 28.5T240-200q17 0 28.5 11.5T280-160v40q0 17-11.5 28.5T240-80H120Zm0-280v-110q0-17 11.5-28.5T160-510h60v-30H120v-60h120q17 0 28.5 11.5T280-560v70q0 17-11.5 28.5T240-450h-60v30h100v60H120Zm60-280v-180h-60v-60h120v240h-60Zm180 440v-80h480v80H360Zm0-240v-80h480v80H360Zm0-240v-80h480v80H360Z" />
                     </svg></span>&nbsp;榜单
             </li>
-            <li>
-                <span id="themeToggle"><svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" height="24px"
-                        viewBox="0 -960 960 960" width="24px" fill="var(--menu-icon-color)">
-                        <path
-                            d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q8 0 17 .5t23 1.5q-36 32-56 79t-20 99q0 100 70 170t170 70q52 0 99-20t79-56q1 14 1.5 23t.5 17q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-116 0-198-82t-82-198q0-20 3-40t8-40q-78 32-126.5 102T216-480q0 110 77 187t187 77Zm-10-270Z" />
-                    </svg><svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" height="24px"
-                        viewBox="0 -960 960 960" width="24px" fill="var(--menu-icon-color)">
-                        <path
-                            d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
-                    </svg><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(--menu-icon-color)">
-                        <path
-                            d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
-                    </svg></span>&nbsp;切换主题
-            </li>
-            <li onclick="toggleFont();">
-                <span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                        fill="var(--menu-icon-color)">
-                        <path
-                            d="M200-200h240v-60h-80l36-100h188l36 100h-80v60h240v-60h-50L538-800H422L250-260h-50v60Zm222-220 66-182h4l66 182H422Z" />
-                    </svg></span>&nbsp;切换字体
-            </li>
-            <li class="menu-xiaozi">
-                <span style="font-family:serif; font-weight: 900;">ByRUDAN</span><br>
-                <span style="font-size: 10px; font-weight: 400; opacity: 0.7;">Style Version: 1.4.0 Beta1</span>
+            <li class="menu-xiaozi"
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 10px 20px;">
+                <span style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <span id="themeToggle"><svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" height="18px"
+                            viewBox="0 -960 960 960" width="18px" fill="currentColor">
+                            <path
+                                d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q8 0 17 .5t23 1.5q-36 32-56 79t-20 99q0 100 70 170t170 70q52 0 99-20t79-56q1 14 1.5 23t.5 17q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-116 0-198-82t-82-198q0-20 3-40t8-40q-78 32-126.5 102T216-480q0 110 77 187t187 77Zm-10-270Z" />
+                        </svg><svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" height="18px"
+                            viewBox="0 -960 960 960" width="18px" fill="currentColor">
+                            <path
+                                d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
+                        </svg><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                            <path
+                                d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
+                        </svg></span>
+                    <span id="fontToggle" onclick="toggleFont();" style="cursor: pointer; font-size: 15px; font-weight: 600; line-height: 18px; display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px;">Aa</span>
+                </span>
+                <span style="display: flex; flex-direction: column; line-height: 1.3; text-align: center;">
+                    <span style="font-family:serif; font-weight: 900; font-size: 18px;">ByRUDAN</span>
+                    <span style="font-size: 9px; font-weight: 400; opacity: 0.7;">Style Version: 1.4.1 Beta1</span>
+                </span>
             </li>
         </ul>
     </div>
@@ -2204,8 +2284,7 @@
             <div class="xibao-slider-track">
                 <div class="xibao xibao-update">
                     <div class="xibaoxin-title">Beta测试版</div>
-                    <div class="xibaoxin-content">推出全新字体切换功能<br>点击菜单即可体验</div>
-                    <div class="xibaoxin-detail">2023年3月20日 ｜ 版本：1.4.0 Beta1</div>
+                    <div class="xibaoxin-content"></div>
                 </div>
                 <div class="xibao" id="xibao">
                     <div class="xibaoxiao">特别赞助：</div>
@@ -3065,10 +3144,12 @@
             <p>另外，最近我一直在尝试桌面版。我想在三月之前推出一个完整的桌面版（5.1），5.2的桌面版与5.2的正式版同时推出。如前文所说，在5.1中加入的很多功能和调整都是为全新的桌面版做准备的。在全新的OOOInterface5.2中，将有一个全新的InterfacePro计划推出。如果加入InterfacePro，您将可以享受专属定制的界面。
             </p>
             <p>OOOInterfaceExpressive版本全版本更新时间表</p>
-            <li style="list-style-type: disc;">OOOInterfaceExpressive(5.0:23)2026/1/1</li>
-            <li style="list-style-type: disc;">OOOInterfaceExpressive(5.1:24)2026/2/10</li>
-            <li style="list-style-type: disc;">OOOInterfaceExpressive(5.2:25)2026/5/10</li>
-            <li style="list-style-type: disc;">OOOInterfaceExpressive(5.3:26)2026/8/10</li>
+            <ul>
+                <li style="list-style-type: disc;">OOOInterfaceExpressive (5.0:23) 2026/1/1</li>
+                <li style="list-style-type: disc;">OOOInterfaceExpressive (5.1:24) 2026/2/10</li>
+                <li style="list-style-type: disc;">OOOInterfaceExpressive (5.2:25) 2026/5/10</li>
+                <li style="list-style-type: disc;">OOOInterfaceExpressive (5.3:26) 2026/8/10</li>
+            </ul>
             <div class="xiaozi">未使用人工智能</div>
         </div>
         <div class="zhengwen">
@@ -3403,10 +3484,13 @@
         }
 
         function applyFont(font) {
+            const fontToggle = document.getElementById('fontToggle');
             if (font === 'serif') {
                 html.setAttribute('data-font', 'serif');
+                if (fontToggle) fontToggle.style.fontFamily = "'HMSC', sans-serif";
             } else {
                 html.removeAttribute('data-font');
+                if (fontToggle) fontToggle.style.fontFamily = "serif";
             }
         }
 
@@ -3415,7 +3499,6 @@
             const newFont = currentFont === 'serif' ? 'hmsc' : 'serif';
             applyFont(newFont === 'hmsc' ? 'hmsc' : 'serif');
             localStorage.setItem('font', newFont === 'hmsc' ? 'hmsc' : 'serif');
-            closeMenu();
         }
 
         const savedFont = localStorage.getItem('font');
@@ -4077,8 +4160,8 @@
 <footer>
     <div class="footp">
         许可证：ABCD-26W08A<br>
-        最后一次更新：2026年3月28日<br>
-        Style Version: 1.4.01 测试版<br>
+        最后一次更新：2026年3月21日<br>
+        Style Version: 1.4.1 Beta1<br>
         © 2026 ByRUDAN 保留所有权利。
     </div>
 </footer>
