@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#FAF5EF" />
+<title>气泡</title>
+<style>
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { overflow-x: clip; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  padding:
+    calc(28px + env(safe-area-inset-top))
+    clamp(16px, 4vw, 28px)
+    calc(28px + env(safe-area-inset-bottom));
+  background: #FAF5EF;
+  color: #1C1B16;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  font-family: "Google Sans", "HarmonyOS Sans SC", "MiSans", "PingFang SC",
+    "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.cloud {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  margin: auto;
+}
+
+.p0 { --c-bg: #FFDCBC; --c-fg: #4A2900; --c-accent: #8A4D00; }
+.p1 { --c-bg: #C9EDD9; --c-fg: #1F4C35; --c-accent: #2F6B4E; }
+.p2 { --c-bg: #D9E2FF; --c-fg: #34456E; --c-accent: #3D5E9E; }
+.p3 { --c-bg: #FFDAD2; --c-fg: #5B2317; --c-accent: #A4432F; }
+.p4 { --c-bg: #EBDCF8; --c-fg: #4B2963; --c-accent: #7A4A9D; }
+
+.bubble {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .45em;
+  width: 100%;
+  min-height: 56px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font: inherit;
+  font-size: clamp(13px, 4vw, 17px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 1px 2px rgba(62, 48, 32, .08);
+  transition:
+    background-color .25s cubic-bezier(.2, 0, 0, 1),
+    color .2s cubic-bezier(.2, 0, 0, 1),
+    transform .25s cubic-bezier(.05, .7, .1, 1),
+    box-shadow .25s cubic-bezier(.2, 0, 0, 1);
+  animation: pop .5s cubic-bezier(.05, .7, .1, 1) backwards;
+  animation-delay: calc(var(--i) * .035s + .06s);
+}
+.bubble.wide { justify-content: center; }
+
+@media (min-width: 720px) {
+  .cloud {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    width: min(100%, 1000px);
+  }
+  .bubble {
+    min-height: 72px;
+    padding: 0 18px;
+    font-size: clamp(18px, 1.7vw, 21px);
+  }
+}
+@media (min-width: 1040px) {
+  .cloud {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    width: min(100%, 1120px);
+  }
+  .bubble {
+    min-height: 82px;
+    padding: 0 20px;
+    font-size: clamp(19px, 1.75vw, 23px);
+  }
+}
+.bubble:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+}
+.bubble.playing {
+  background: var(--c-accent);
+  color: #fff;
+  box-shadow:
+    0 2px 4px rgba(62, 48, 32, .12),
+    0 8px 22px rgba(62, 48, 32, .16);
+}
+@media (hover: hover) and (pointer: fine) {
+  .bubble:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 2px 4px rgba(62, 48, 32, .10),
+      0 8px 20px rgba(62, 48, 32, .12);
+  }
+}
+.bubble:active { transform: scale(.97); }
+
+.ic {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.05em;
+  height: 1.05em;
+  color: var(--c-accent);
+}
+.ic svg { width: 100%; height: 100%; fill: currentColor; }
+.bubble.playing .ic { color: #fff; }
+.bubble.playing .ic svg { display: none; }
+
+.eq {
+  display: none;
+  width: 1.05em;
+  height: 1.05em;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.eq i {
+  width: .17em;
+  height: 100%;
+  border-radius: .09em;
+  background: currentColor;
+  transform-origin: bottom center;
+  animation: bar .7s ease-in-out infinite alternate;
+}
+.eq i:nth-child(2) { animation-delay: .16s; }
+.eq i:nth-child(3) { animation-delay: .32s; }
+.bubble.playing .eq { display: flex; }
+
+.txt { position: relative; z-index: 1; }
+
+.ripple {
+  position: absolute;
+  left: var(--rx);
+  top: var(--ry);
+  width: var(--rs);
+  height: var(--rs);
+  margin: calc(var(--rs) / -2) 0 0 calc(var(--rs) / -2);
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .14;
+  pointer-events: none;
+  animation: rip .5s cubic-bezier(.05, .7, .1, 1) forwards;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(12px) scale(.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bar {
+  from { transform: scaleY(.3); }
+  to { transform: scaleY(1); }
+}
+@keyframes rip {
+  from { transform: scale(.2); opacity: .16; }
+  to { transform: scale(1); opacity: 0; }
+}
+
+.snackbar {
+  position: fixed;
+  left: 50%;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  z-index: 30;
+  max-width: calc(100vw - 40px);
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: #312E28;
+  color: #F4EFE6;
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 20px);
+  transition:
+    opacity .2s linear,
+    transform .32s cubic-bezier(.05, .7, .1, 1);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, .16),
+    0 6px 16px rgba(0, 0, 0, .18);
+}
+.snackbar.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #16130F;
+    color: #F1EBE1;
+  }
+  .p0 { --c-bg: #4A3215; --c-fg: #FFDCBC; --c-accent: #FFB86B; }
+  .p1 { --c-bg: #1E3B2C; --c-fg: #C9EDD9; --c-accent: #7CD3A8; }
+  .p2 { --c-bg: #26324F; --c-fg: #D9E2FF; --c-accent: #A9C1FF; }
+  .p3 { --c-bg: #4A2721; --c-fg: #FFDAD2; --c-accent: #FF9C86; }
+  .p4 { --c-bg: #362546; --c-fg: #EBDCF8; --c-accent: #C99BE8; }
+  .bubble { box-shadow: 0 1px 2px rgba(0, 0, 0, .45); }
+  .bubble.playing,
+  .bubble.playing .ic { color: #211A13; }
+  .snackbar { background: #EDE7DE; color: #2B2721; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-delay: 0s !important;
+    animation-duration: .001s !important;
+    transition-duration: .001s !important;
+  }
+}
+</style>
+</head>
+<body>
+<div class="cloud" id="list"></div>
+
+<div class="snackbar" id="snack" role="status" aria-live="polite">音频未就绪</div>
+
+<script>
+(function () {
+  var ITEMS = [
+    { name: '哈', at: 32, span: 2 },
+    { name: '班长有问题', at: 1 },
+    { name: '组长有问题', at: 5 },
+    { name: '课代表有问题', at: 3 },
+    { name: '老师有问题', at: 8 },
+    { name: '放屁', at: 12 },
+    { name: '再讲的话出去', at: 13 },
+    { name: '依然不改', at: 15 },
+    { name: '一盘散沙', at: 17 },
+    { name: '富可敌国', at: 19 },
+    { name: '我班学生的小孩', at: 21 },
+    { name: '你文盲不要说', at: 28 },
+    { name: '罗衍楠也可以', at: 30 }
+  ];
+  var ICON = '<span class="ic" aria-hidden="true">' +
+    '<svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg>' +
+    '<span class="eq"><i></i><i></i><i></i></span></span>';
+
+  var list = document.getElementById('list');
+  var snack = document.getElementById('snack');
+  var snackTimer;
+  var stopTimer;
+  var current = null;
+  var meta = document.querySelector('meta[name="theme-color"]');
+  var darkQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+  function syncMeta() {
+    if (meta) meta.setAttribute('content', darkQuery && darkQuery.matches ? '#16130F' : '#FAF5EF');
+  }
+  syncMeta();
+  if (darkQuery) {
+    if (darkQuery.addEventListener) darkQuery.addEventListener('change', syncMeta);
+    else if (darkQuery.addListener) darkQuery.addListener(syncMeta);
+  }
+
+  function showSnack(msg) {
+    snack.textContent = msg || '音频未就绪';
+    snack.classList.add('show');
+    clearTimeout(snackTimer);
+    snackTimer = setTimeout(function () { snack.classList.remove('show'); }, 2200);
+  }
+
+  var SOURCES = ['resources/audio.mp3', 'resources/audio.m4a'];
+  var srcIndex = 0;
+  var audio = new Audio();
+  audio.preload = 'auto';
+  audio.addEventListener('ended', stop);
+  audio.addEventListener('error', function () {
+    if (srcIndex + 1 < SOURCES.length) {
+      srcIndex++;
+      audio.src = SOURCES[srcIndex];
+      audio.load();
+    }
+  });
+  audio.src = SOURCES[srcIndex];
+
+  function stop() {
+    clearTimeout(stopTimer);
+    audio.pause();
+    if (!current) return;
+    current.bubble.classList.remove('playing');
+    current.bubble.setAttribute('aria-pressed', 'false');
+    current = null;
+  }
+
+  function segmentEnd(start) {
+    var best = null;
+    ITEMS.forEach(function (item) {
+      if (item.at > start && (best === null || item.at < best)) best = item.at;
+    });
+    return best;
+  }
+
+  function play(b, i) {
+    if (current && current.bubble === b) {
+      stop();
+      return;
+    }
+    stop();
+    var start = ITEMS[i].at;
+    var end = segmentEnd(start);
+    var dur = audio.duration;
+    if (isFinite(dur) && dur > 0 && start >= dur) {
+      showSnack('该段暂无音频');
+      return;
+    }
+    try { audio.currentTime = start; } catch (e) {}
+    var ok = function () {
+      b.classList.add('playing');
+      b.setAttribute('aria-pressed', 'true');
+      current = { bubble: b };
+      clearTimeout(stopTimer);
+      if (end !== null) stopTimer = setTimeout(stop, (end - start) * 1000);
+    };
+    var p = audio.play();
+    if (p && p.catch) p.then(ok, function () { showSnack(); }); else ok();
+  }
+
+  function ripple(b, x, y) {
+    var r = b.getBoundingClientRect();
+    var size = Math.hypot(Math.max(x, r.width - x), Math.max(y, r.height - y)) * 2;
+    var el = document.createElement('span');
+    el.className = 'ripple';
+    el.style.setProperty('--rx', x + 'px');
+    el.style.setProperty('--ry', y + 'px');
+    el.style.setProperty('--rs', size + 'px');
+    b.appendChild(el);
+    el.addEventListener('animationend', function () { el.remove(); });
+  }
+
+  var made = ITEMS.map(function (item, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'bubble p' + (i % 5);
+    b.style.setProperty('--i', i);
+    if (item.span) {
+      b.style.gridColumn = 'span ' + item.span;
+      b.classList.add('wide');
+    }
+    b.dataset.name = item.name;
+    b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = ICON + '<span class="txt"></span>';
+    b.querySelector('.txt').textContent = item.name;
+
+    b.addEventListener('pointerdown', function (e) {
+      var r = b.getBoundingClientRect();
+      ripple(b, e.clientX - r.left, e.clientY - r.top);
+    });
+    b.addEventListener('click', function () { play(b, i); });
+    return b;
+  });
+
+  made.forEach(function (b) { list.appendChild(b); });
+})();
+</script>
+</body>
+</html>
