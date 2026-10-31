@@ -286,16 +286,39 @@ body {
   var SOURCES = ['resources/audio.mp3', 'resources/audio.m4a'];
   var srcIndex = 0;
   var audio = new Audio();
+  var blobUrl = null;
   audio.preload = 'auto';
   audio.addEventListener('ended', stop);
   audio.addEventListener('error', function () {
     if (srcIndex + 1 < SOURCES.length) {
       srcIndex++;
-      audio.src = SOURCES[srcIndex];
-      audio.load();
+      loadSource();
     }
   });
-  audio.src = SOURCES[srcIndex];
+
+  // 页面一打开就把整段音频拉进内存，之后 seek 不用再等网络
+  function warm(url) {
+    if (!window.fetch || !window.URL || !URL.createObjectURL) return;
+    fetch(url).then(function (res) {
+      if (!res.ok) throw new Error(String(res.status));
+      return res.blob();
+    }).then(function (blob) {
+      var next = URL.createObjectURL(blob);
+      if (current) { URL.revokeObjectURL(next); return; }
+      if (blobUrl) URL.revokeObjectURL(blobUrl);
+      blobUrl = next;
+      audio.src = next;
+      audio.load();
+    }).catch(function () {});
+  }
+
+  function loadSource() {
+    audio.src = SOURCES[srcIndex];
+    audio.load();
+    warm(SOURCES[srcIndex]);
+  }
+
+  loadSource();
 
   function stop() {
     clearTimeout(stopTimer);
