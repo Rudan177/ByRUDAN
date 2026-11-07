@@ -61,7 +61,8 @@ body {
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: .01em;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
   text-align: left;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -253,7 +254,9 @@ body {
     { name: '富可敌国', at: 19 },
     { name: '我班学生的小孩', at: 21 },
     { name: '你文盲不要说', at: 28 },
-    { name: '罗衍楠也可以', at: 30 }
+    { name: '罗衍楠也可以', at: 30 },
+    { name: '擦擦口水哦', src: 'resources/' + encodeURIComponent('擦擦口水哦.m4a') },
+    { name: '谁讲的话', src: 'resources/' + encodeURIComponent('刘远晨刚刚走的时候谁讲的话.m4a') }
   ];
   var ICON = '<span class="ic" aria-hidden="true">' +
     '<svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg>' +
@@ -286,7 +289,6 @@ body {
   var SOURCES = ['resources/audio.mp3', 'resources/audio.m4a'];
   var srcIndex = 0;
   var audio = new Audio();
-  var blobUrl = null;
   audio.preload = 'auto';
   audio.addEventListener('ended', stop);
   audio.addEventListener('error', function () {
@@ -296,34 +298,48 @@ body {
     }
   });
 
-  // 页面一打开就把整段音频拉进内存，之后 seek 不用再等网络
-  function warm(url) {
+  // 页面一打开就把音频拉进内存，之后 seek / 播放都不用再等网络
+  function primeBlob(el, url) {
     if (!window.fetch || !window.URL || !URL.createObjectURL) return;
     fetch(url).then(function (res) {
       if (!res.ok) throw new Error(String(res.status));
       return res.blob();
     }).then(function (blob) {
+      if (el.__active) return;
       var next = URL.createObjectURL(blob);
-      if (current) { URL.revokeObjectURL(next); return; }
-      if (blobUrl) URL.revokeObjectURL(blobUrl);
-      blobUrl = next;
-      audio.src = next;
-      audio.load();
+      if (el.__blob) URL.revokeObjectURL(el.__blob);
+      el.__blob = next;
+      el.src = next;
+      el.load();
     }).catch(function () {});
   }
 
   function loadSource() {
     audio.src = SOURCES[srcIndex];
     audio.load();
-    warm(SOURCES[srcIndex]);
+    primeBlob(audio, SOURCES[srcIndex]);
   }
+
+  // 独立音频文件（不从大文件里切段）
+  var altCache = {};
+  ITEMS.forEach(function (item) {
+    if (!item.src) return;
+    var alts = new Audio();
+    alts.preload = 'auto';
+    alts.src = item.src;
+    alts.addEventListener('ended', stop);
+    altCache[item.src] = alts;
+    primeBlob(alts, item.src);
+  });
 
   loadSource();
 
   function stop() {
     clearTimeout(stopTimer);
     audio.pause();
+    Object.keys(altCache).forEach(function (k) { altCache[k].pause(); });
     if (!current) return;
+    if (current.el) current.el.__active = false;
     current.bubble.classList.remove('playing');
     current.bubble.setAttribute('aria-pressed', 'false');
     current = null;
@@ -343,23 +359,35 @@ body {
       return;
     }
     stop();
-    var start = ITEMS[i].at;
-    var end = segmentEnd(start);
-    var dur = audio.duration;
-    if (isFinite(dur) && dur > 0 && start >= dur) {
-      showSnack('该段暂无音频');
-      return;
+    var item = ITEMS[i];
+    var el, start = 0, end = null;
+    if (item.src) {
+      el = altCache[item.src];
+      if (!el) { showSnack('音频未就绪'); return; }
+      try { el.currentTime = 0; } catch (e) {}
+    } else {
+      el = audio;
+      start = item.at;
+      end = segmentEnd(start);
+      var dur = audio.duration;
+      if (isFinite(dur) && dur > 0 && start >= dur) {
+        showSnack('该段暂无音频');
+        return;
+      }
+      try { audio.currentTime = start; } catch (e) {}
     }
-    try { audio.currentTime = start; } catch (e) {}
+    el.__active = true;
     var ok = function () {
       b.classList.add('playing');
       b.setAttribute('aria-pressed', 'true');
-      current = { bubble: b };
+      current = { bubble: b, el: el };
       clearTimeout(stopTimer);
       if (end !== null) stopTimer = setTimeout(stop, (end - start) * 1000);
     };
-    var p = audio.play();
-    if (p && p.catch) p.then(ok, function () { showSnack(); }); else ok();
+    var p = el.play();
+    if (p && p.catch) {
+      p.then(ok, function () { el.__active = false; showSnack(); });
+    } else ok();
   }
 
   function ripple(b, x, y) {
