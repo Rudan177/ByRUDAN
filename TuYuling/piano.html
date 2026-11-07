@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5fbfb" />
+    <meta
+      name="description"
+      content="涂玉玲人聲鋼琴：用滑鼠、觸控或電腦鍵盤演奏 C4 到 G5 的人聲採樣。"
+    />
+    <title>涂玉玲鋼琴</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <button class="about-button" id="about-toggle" type="button">關於</button>
+
+    <main class="app-shell">
+      <header class="hero">
+        <div class="eyebrow">TU YULING VOCAL PIANO</div>
+        <h1>涂玉玲鋼琴</h1>
+        <p>點擊琴鍵，讓玉玲唱給你聽♪</p>
+      </header>
+
+      <section class="instrument" aria-label="涂玉玲人聲鋼琴">
+        <div class="toolbar">
+          <div class="mode-switch" role="group" aria-label="琴鍵標示方式">
+            <button class="mode-button is-selected" type="button" data-label-mode="note" aria-pressed="true">
+              音名
+            </button>
+            <button class="mode-button" type="button" data-label-mode="solfege" aria-pressed="false">
+              唱名
+            </button>
+          </div>
+
+          <div class="toolbar-actions">
+            <label class="sustain-control" for="sustain-length">
+              <span>延音時長</span>
+              <input
+                id="sustain-length"
+                type="range"
+                min="0.53"
+                max="6.3"
+                step="0.01"
+                value="0.53"
+                aria-label="延音時長（秒）"
+              />
+              <output id="sustain-value" for="sustain-length">0.53 秒</output>
+            </label>
+            <button class="stop-button" id="stop-all" type="button">停止全部聲音</button>
+          </div>
+        </div>
+
+        <div class="piano-scroll" aria-label="鋼琴鍵盤，可水平捲動">
+          <div class="piano" id="piano" role="group" aria-label="C4 到 G5 的白鍵鋼琴"></div>
+        </div>
+
+        <div class="instrument-footer">
+          <p id="audio-status" role="status" aria-live="polite">正在準備音色…</p>
+          <p class="keyboard-hint">電腦鍵盤：A S D F G H J K L ; ' Enter</p>
+        </div>
+      </section>
+
+      <noscript>請啟用 JavaScript 以演奏鋼琴。</noscript>
+    </main>
+
+    <dialog class="about-dialog" id="about-dialog" aria-labelledby="about-title">
+      <div class="about-card">
+        <button class="about-close" id="about-close" type="button" aria-label="關閉">×</button>
+        <p class="about-eyebrow">ABOUT</p>
+        <h2 id="about-title">關於這個鋼琴</h2>
+        <dl class="about-list">
+          <div>
+            <dt>原專案</dt>
+            <dd>洛天依鋼琴（Luo Tianyi Vocal Piano）</dd>
+          </div>
+          <div>
+            <dt>原專案作者</dt>
+            <dd>JJ880305</dd>
+          </div>
+          <div>
+            <dt>原專案連結</dt>
+            <dd>
+              <a href="https://github.com/JJ880305/luo-tianyi-piano" target="_blank" rel="noreferrer">
+                github.com/JJ880305/luo-tianyi-piano
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt>技術</dt>
+            <dd>Web Audio API ・ Rubber Band 移調與時間伸縮</dd>
+          </div>
+        </dl>
+        <p class="about-note">本頁為非官方作品，原專案與相關素材版權歸原作者所有。</p>
+      </div>
+    </dialog>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
